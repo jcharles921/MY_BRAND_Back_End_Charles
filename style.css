@@ -1,0 +1,125 @@
+:root{
+    --Dark-green: #0B525B;
+    --light-orange:#F4A261;
+    --orange:#FF6700;
+    --text:white;
+    --light-text:rgba(255, 255, 255, 0.82);
+    --nav-color:#F4A261;
+    --hover-color-nav:#FF6700;
+    --hover-color-button:white;
+    --hover-color-button-text:#FF6700;
+    --invalid-color:red;
+    --big-title-56:3.5rem;
+    --line-height:0.666666667;
+    --sub-title-38:2.375rem;
+    --small-title-42:2.625rem;
+    --container-1237:77.3125rem;
+    /* --sub-title-TS:2.625rem;
+    --sub-title-LH-:0.666666667; */
+
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 100%;
+}
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+body{
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--Dark-green);
+    overflow-x: hidden;
+}
+header{
+    margin-top: 30px;
+}
+.container{
+    width: calc(100% - 12.5rem);
+   
+    max-width: var(--container-1237);
+    margin-inline: auto;
+}
+.logo{
+    width: 60px;
+    height: 60px;
+}
+.navigation{
+    width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
+}
+.bigtitle{
+    font-size: 2.4375rem;
+font-size: clamp(2.4375rem, 1.7291666666666667rem + 2.361111111111111vw, 3.5rem);
+text-decoration: none;
+color: var(--text);
+}
+.nav_button{
+ 
+    width: 89px;
+    height: 41px;
+    color: var(--text);
+    background-color: var(--light-orange);
+    border-radius: 20px;
+    border: none;
+    font-size: 1.3125em;
+    line-height: 1.5625em;
+    margin-left: 12px;
+}
+.nav_button:hover{
+    background-color: var(--hover-color-nav);
+}
+.front-page{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.front-page p{
+    width: 40.500vw;
+    padding: 0px;
+    margin: 0px;
+}
+.front-page .bigtitle{
+    margin-top: 105px;
+
+}
+.front-page .resume{
+    margin-top: 128px;
+    width: 210px;
+    height: 70px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--orange);
+    font-size: 2.25em;
+}
+.front-page .resume:hover{
+    cursor: pointer;
+    background-color: var(--hover-color-button);
+    color: var(--orange);
+}
+.profile{
+    width: 51.250vw;
+    height: auto;
+    position: relative;
+    right: 45px;    
+    /* left: 45px; */
+}
+.subtitle{
+    font-size: var(--sub-title-38);
+    color: white;
+}
+
+
+@media (max-width:30em) { 
+    /* 480px */
+    .container{
+        width: calc(100% - 5rem );
+    }
+    
+}
