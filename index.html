@@ -17,9 +17,9 @@
                 <nav>
                     <div class="navigation">
                         <a href="http://"></a><img src="./assets/images/logo.svg" alt="" class="logo">
-                        <div>
+                        <div class="button-container">
                             <a href="http://"><button class="nav_button">Home</button></a>
-                            <a href="http://"><button class="nav_button">About</button></a>
+                            <a href="#about_t"><button class="nav_button">About</button></a>
                             <a href="http://"><button class="nav_button">Blog</button></a>
                             <a href="http://"><button class="nav_button">Login</button></a>
                         </div>
@@ -33,33 +33,54 @@
                 <div class="front-page_1">
                     <p class="bigtitle"><b>Hi</b>, i am CHARLES</p>
                     <p class="subtitle">I develope things for the web</p>
-                    <button class="resume">Resume</button>
+                    <a href="./assets/Docs/My CV.pdf" download="My CV.pdf"><button class="resume">Resume</button></a>
                 </div>
                 <div class="front-page_2">
                     <img class="profile" src="./assets/images/Profile main.svg" alt="">
                 </div>
             </section>
-            <main id="" class="About">
+            <main id="about_t" class="About">
                 <div class="About_1">
-                    <p class="smalltitle">Get to know me !</p>
-                    <p class="About_text"><h2>“</h2>I am around being a junior developer currently following a massive training with Andela. With the objective of being a full stack developer I learn every day without being able to satisfy my thirst for knowledge<h2>"</h2></p>
-                    <img src="./assets/images/211721_cloud_icon 1.svg" alt=""><img src="./assets/images/world.svg" alt=""><img src="./assets/images/database.svg" alt="">            
+                    <p class="smalltitle"><b> Get to know me !</b></p>
+                    <p class="About_text"><b>“</b>I am around being a junior developer currently following a massive training with Andela. With the objective of being a full stack developer I learn every day without being able to satisfy my thirst for knowledge<b>"</b></p>
+                    <img id="cloud" style="position: relative;left: 35.375em;bottom: 435px;" src="./assets/images/211721_cloud_icon 1.svg" alt=""><img id="globe" style="position: relative;right: 108px;" src="./assets/images/world.svg" alt="">
+                    <div class="icon-container">
+                        <img id="DB1"  src="./assets/images/database.svg" alt="">
+                        <img id="DB2"  src="./assets/images/database2.svg" alt="">  
+                    </div>           
                 </div>
-                <div class="About_2">
+                <div style="display: flex;" class="About_2">
                     <img src="./assets/images/computer.svg" alt="">
-                    <img src="./assets/images/gear.svg" alt="">
+                    <img style="position: relative;bottom: 100px;" id="G2" src="./assets/images/Gear2.svg" alt="">
+                    <img style="position: relative;bottom: 57px;right: 25px;" id="G1" src="./assets/images/Gear1.svg" alt="">
+
                 </div>
             </main>
 
-            <p class="subtitle">My recent Works</p>
+            <div style="margin-top: 100px;display:flex;flex-direction: row;justify-content: center;">
+                <p class="subtitle">My Recent Works</p>
+            </div>
             <div class="work_done">
                 <img src="./assets/images/desktop-preview 1.svg" alt=""><img src="./assets/images/desktop-preview 2.svg" alt=""><img src="./assets/images/desktop-preview 3.svg" alt="">
             </div>
-            <p class="subtitle">My Skills</p>
+            <div style="margin-top: 100px;display:flex;flex-direction: row;justify-content: center;">
+                <p class="subtitle">My Skills</p>
+            </div>
+            
             <section class="skills">
-                <img src="./assets/images/Git logo.svg" alt=""><img src="./assets/images/CSS3.svg" alt=""><img src="./assets/images/Html.svg" alt=""><img src="./assets/images/javascript.svg" alt=""><img src="./assets/images/Arduino.svg" alt=""><img src="./assets/images/mongodb.svg" alt=""><img src="./assets/images/postman.svg" alt="">
+                <img id="git">
+                <img id="css">
+                <img id="html">
+                <img id="js">
+                <img id="arduino">
+                <img id="mongodb">
+                <img id="postman">
+                
             </section>
-            <p class="subtitle">Languages</p>
+            <div style="margin-top: 100px;display:flex;flex-direction: row;justify-content: center;">
+                <p class="subtitle">Languages</p>
+            </div>
+            
             <section class="languages">
                 <img src="./assets/images/united-kingdom.svg" alt=""><img src="./assets/images/France.svg" alt=""><img src="./assets/images/burundi.svg" alt=""><img src="./assets/images/rwanda.svg" alt="">
             </section>
@@ -67,26 +88,31 @@
                 <div class="contact_me_1">
                     <p class="title_contact">GET IN TOUCH</p>
                     <p class="text_contact" >Got a question or proposal, or just want to sat hello? Go ahead</p>
-                    <input type="text" placeholder="Your name" name="" id=""><input type="text" placeholder="Your email" name="" id=""><input type="text" placeholder="Your message"name="" id="">
+                    <input type="text" placeholder="Your name" name="" id="">
+                    <input type="text" placeholder="Your email" name="" id="Email">
+                    <textarea name="" id="message" cols="30" rows="10" placeholder="Your message"></textarea>
                     <button class="button_contact">Send</button>
 
                 </div>
                 <div class="contact_me_2">
                         <h4>Email</h4>
-                        <span class="line"></span>
+                        <hr class="line">
                         <p>babouwitonze921@gmail.com</p>
                         <h4>Phone</h4>
-                        <span class="line"></span>
+                        <hr class="line">
                         <p>0788998139</p>
                         <h4>Socials</h4>
-                        <span class="line"></span>
+                        <hr class="line">
                         <div class="socials">
-                            <img src="./assets/images/linkedlin.svg" alt=""><img src="./assets/images/github.svg" alt=""><img src="./assets/images/facebook.svg" alt=""><img src="./assets/images/instagram.svg" alt="">
+                            <img src="./assets/images/linkedlin.svg" alt="">
+                            <img src="./assets/images/github.svg" alt="">
+                            <img src="./assets/images/facebook.svg" alt="">
+                            <img src="./assets/images/instagram.svg" alt="">
                         </div>
                 </div>
             </section>
-            <footer class="footer">
-                <span class="line"></span>
+            <hr class="footer_line">
+            <footer class="footer">     
                 <p>© Uwitonze jean Charles 2023</p>
             </footer>
     
