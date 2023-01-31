@@ -22,7 +22,13 @@
                             <a href="#about_t"><button class="nav_button">About</button></a>
                             <a href="http://"><button class="nav_button">Blog</button></a>
                             <a href="http://"><button class="nav_button">Login</button></a>
+                            <div class="hambourger">
+                                <hr>
+                                <hr>
+                                <hr>
+                            </div>
                         </div>
+                      
 
                     </div>
                    
@@ -33,10 +39,11 @@
                 <div class="front-page_1">
                     <p class="bigtitle"><b>Hi</b>, i am CHARLES</p>
                     <p class="subtitle">I develope things for the web</p>
-                    <a href="./assets/Docs/My CV.pdf" download="My CV.pdf"><button class="resume">Resume</button></a>
+                    <a href="./assets/Docs/My CV.pdf" download="My CV.pdf"><button class="resume">My Résumé</button></a>
                 </div>
                 <div class="front-page_2">
                     <img class="profile" src="./assets/images/Profile main.svg" alt="">
+                    <a href="./assets/Docs/My CV.pdf" download="My CV.pdf"><button class="resume2">My Résumé</button></a>
                 </div>
             </section>
             <main id="about_t" class="About">
@@ -68,13 +75,13 @@
             </div>
             
             <section class="skills">
-                <img id="git">
-                <img id="css">
-                <img id="html">
-                <img id="js">
-                <img id="arduino">
-                <img id="mongodb">
-                <img id="postman">
+                <span id="git"><p>.</p></span>
+                <span id="css"><p>.</p></span>
+                <span id="html"><p>.</p></span>
+                <span id="js"><p>.</p></span>
+                <span id="arduino"><p>.</p></span>
+                <span id="mongodb"><p>.</p></span>
+                <span id="postman"><p>.</p></span>
                 
             </section>
             <div style="margin-top: 100px;display:flex;flex-direction: row;justify-content: center;">
@@ -88,10 +95,11 @@
                 <div class="contact_me_1">
                     <p class="title_contact">GET IN TOUCH</p>
                     <p class="text_contact" >Got a question or proposal, or just want to sat hello? Go ahead</p>
-                    <input type="text" placeholder="Your name" name="" id="">
+                    <input type="text" placeholder="Your name" name="" id="Name">
                     <input type="text" placeholder="Your email" name="" id="Email">
+                    <span id="output"></span>
                     <textarea name="" id="message" cols="30" rows="10" placeholder="Your message"></textarea>
-                    <button class="button_contact">Send</button>
+                    <button id="form" class="button_contact" onclick="test()">Send</button>
 
                 </div>
                 <div class="contact_me_2">
@@ -104,10 +112,11 @@
                         <h4>Socials</h4>
                         <hr class="line">
                         <div class="socials">
-                            <img src="./assets/images/linkedlin.svg" alt="">
-                            <img src="./assets/images/github.svg" alt="">
-                            <img src="./assets/images/facebook.svg" alt="">
-                            <img src="./assets/images/instagram.svg" alt="">
+                            <span class="linkedlin"><a href="http://"></a></span>
+                            <span class="github"><a href="http://"></a></span>
+                            <span class="facebook"><a href="http://"></a></span>
+                            <span class="instagram"><a href=""></a></span>
+
                         </div>
                 </div>
             </section>
@@ -119,3 +128,4 @@
    </div>
 </body>
 </html>
+<script src="./index.js"></script>

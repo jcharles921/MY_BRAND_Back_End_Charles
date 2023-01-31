@@ -82,6 +82,9 @@ justify-content: flex-end;
   grid-column-end: 2;
   transition: var(--transition-delay-buttons);
 }
+.hambourger{
+    visibility: hidden;
+}
     
 
 .nav_button:hover{
@@ -112,7 +115,7 @@ justify-content: flex-end;
     color: white;
     border: none;
     border-radius: 50px;
-    background-color: var(--orange);
+    background-color: var(--light-orange);
     font-size: 2.25em;
     transition: var(--transition-delay-buttons);
 }
@@ -122,6 +125,9 @@ justify-content: flex-end;
     color: var(--orange);
     transform: scale(1.08);
     transition: var(--transition-delay-buttons);
+}
+.resume2{
+    visibility: hidden;
 }
 .profile{
     width: 51.250vw;
@@ -196,57 +202,84 @@ justify-content: flex-end;
     flex-direction: row;
     justify-content: space-between;
 }
-.skills img{
-width: 6.25vw;
+.skills p{
+width: 107px;
 height: 100px;
 background-repeat: no-repeat;
-background-position: center center;
+background-position: center;
 }
 #git{
-    background-image: url(./assets/images/Git\ logo.svg);
+    background-image: url(./assets/images/git.svg);
     background-repeat: no-repeat;
-    /* width: 165px;
-    border: none;
-    height: 166px; */
+    background-position: center;
+    height: 100px;
+    margin-top: 23px;
+ 
 }
 #git:hover{
-    background-image: url(./assets/images/Git\ logo_hover.svg);
+    background-image: url(./assets/images/git_hover.svg);
+    background-repeat: no-repeat;
+background-position: center center;
 }
 #css{
     background-image: url(./assets/images/CSS3.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #css:hover{
     background-image: url(./assets/images/CSS3_hover.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #html{
-    background-image: url(./assets/images/Html.svg);
+    background-image: url(./assets/images/Html.png);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #html:hover{
-    background-image: url(./assets/images/Html_hover.svg);
+    background-image: url(./assets/images/Html_hover.png);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #js{
     background-image: url(./assets/images/javascript.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #js:hover{
     background-image: url(./assets/images/javascript_hover.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #arduino{
     background-image: url(./assets/images/Arduino.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #arduino:hover{
     background-image: url(./assets/images/Arduino_hover.svg);
+    background-repeat: no-repeat;
+background-position: center center;
 }
 #mongodb{
     background-image: url(./assets/images/mongodb.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #mongodb:hover{
     background-image: url(./assets/images/mongodb_hover.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #postman{
     background-image: url(./assets/images/postman.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 #postman:hover{
     background-image: url(./assets/images/postman_hover.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 .languages{
     display: flex;
@@ -278,6 +311,7 @@ background-position: center center;
 .contact_me_1 input{
     width: 382px;
     height: 43px;
+    color: white;
     margin-top: 40px;
     border-radius: 10px;
     background-color: var(--Dark-green);
@@ -291,10 +325,17 @@ background-position: center center;
 #message{
     width: 544px;
     height: 166px;
+    color: white;
     border-radius: 10px;
     margin-top: 51px;
     background-color: var(--Dark-green);
     border: 1px solid var(--light-orange);
+}
+#output{
+    color: red;
+    font-size: 23px;
+    margin-top: 8px;
+    margin-left: 99px;
 }
 .contact_me_1 textarea::placeholder{
     position: relative;
@@ -355,6 +396,51 @@ background-position: center center;
     height: 0px;
 
 }
+.socials span{
+    width: 45px;
+    height: 45px;
+}
+.linkedlin{
+    background-image: url(./assets/images/linkedlin.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+}
+.linkedlin:hover{
+    background-image: url(./assets/images/linkedlin_hover.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.github{
+    background-image: url(./assets/images/github.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.github:hover{
+    background-image: url(./assets/images/github_hover.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.facebook{
+    background-image: url(./assets/images/facebook.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.facebook:hover{
+    background-image: url(./assets/images/facebook_hover.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.instagram{
+    background-image: url(./assets/images/instagram.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.instagram:hover{
+    background-image: url(./assets/images/instagram_hover.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 
 
 @keyframes switchIcon {
@@ -394,11 +480,41 @@ background-position: center center;
       transform: rotate(360deg);
     }
   }
-
-@media (max-width:30em) { 
+/*phones*/
+@media (max-width:30em) and (min-width:20em) { 
     /* 480px */
     .container{
         width: calc(100% - 5rem );
     }
+    .button-container{
+        visibility: hidden;
+    }
+    .hambourger{
+        visibility: visible;
+        z-index: 2;
+    }
+    .hambourger hr{
+
+        width: 42px;
+        height: 0px;
+        border: 1px solid #F4A261;
+    }
+    .front-page{
+        flex-direction: column;
+    }
+    .resume{
+        visibility: hidden;
+    }
+    .resume2{
+        visibility: visible;
+    }
+    .bigtitle{
+        margin-top: 50px;
+        width: 100%;
+    }
     
+}
+/* small screen laptops */
+@media (max-width:64em) and (min-width:48em){
+
 }
