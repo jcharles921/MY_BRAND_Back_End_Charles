@@ -147,11 +147,13 @@ justify-content: flex-end;
 }
 .About .smalltitle{
     color: white;
-    font-size: 2.625em;
+    font-size: 2.375rem;
+    font-size: clamp(2.375rem, 2.2083333333333335rem + 0.5555555555555556vw, 2.625rem);
 
 }
 .About_text{
-    font-size: 1.9375em;
+    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 0.7916666666666666rem + 1.527777777777778vw, 1.9375rem);
     text-align: justify;
     width: 21.1875em;
     color: white;
@@ -192,11 +194,16 @@ justify-content: flex-end;
     z-index: 0;
     opacity: 0;
 }
+
 .work_done{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
+.sec_end{
+    margin-top: 100px;
+}
+
 .skills{
     display: flex;
     flex-direction: row;
@@ -208,6 +215,16 @@ height: 100px;
 background-repeat: no-repeat;
 background-position: center;
 }
+.skills2{
+    visibility: hidden;
+}
+/* .skills .sub_skill {
+    width: 214px;
+    height: 110px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+} */
 #git{
     background-image: url(./assets/images/git.svg);
     background-repeat: no-repeat;
@@ -501,18 +518,106 @@ background-position: center center;
     }
     .front-page{
         flex-direction: column;
+        height: 409px;
     }
     .resume{
         visibility: hidden;
     }
     .resume2{
         visibility: visible;
+        position: relative;
+        width: 170px;
+        height: 50px;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        background-color: var(--light-orange);
+        font-size: 1.25em;
+        transition: var(--transition-delay-buttons);
+        bottom: 105px;
+        left: 105px;
+    }
+    .resume2:hover{
+        cursor: pointer;
+    background-color: var(--hover-color-button);
+    color: var(--orange);
+    transform: scale(1.08);
+    transition: var(--transition-delay-buttons);
     }
     .front-page .bigtitle {
         margin-top: 50px;
         width: 100%;
+        
     }
-    
+    .front-page .subtitle {
+        width: 100%;
+        padding-left: 9px;
+        margin: 0px;
+        font-size:1.3125em ;
+        margin-top: 9px;
+    }
+    .front-page_1{
+        padding-left: 35px;
+    }
+    .profile{
+        right: 0px;
+        left: 68px;
+        bottom: 162px;
+    }
+    .About{
+        margin-top: 180px;
+    }
+    .About .smalltitle{
+        left: 45px;
+        position: relative;
+    }
+    .About_2{
+        visibility: hidden;
+    }
+    .About img{
+        visibility: hidden;
+    }
+    .sec_end{
+        margin-top: 0px;
+    }
+    .work_done{
+        flex-direction: column;
+        align-items: center;
+    }
+    .work_done img{
+    width: 47.91666666666667vw;
+    margin-top: 15px;
+    }
+    .skills{
+        visibility: hidden;
+    }
+    .skills2{
+        visibility: visible;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -100px;
+    }
+    .skills2 p{
+        width: 107px;
+        height: 100px;
+        background-repeat: no-repeat;
+        background-position: center;
+        }
+    .skills2 .sub_skill {
+        width: 214px;
+        height: 110px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: flex;
+    }
+    #git{
+        margin-top: 0px;
+    }
+    #postman{
+        width: 100px;
+    display: inline-block;
+    }
 }
 /* small screen laptops */
 @media (max-width:64em) and (min-width:48em){
