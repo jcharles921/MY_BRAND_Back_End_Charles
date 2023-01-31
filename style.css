@@ -508,7 +508,7 @@ background-position: center center;
     .resume2{
         visibility: visible;
     }
-    .bigtitle{
+    .front-page .bigtitle {
         margin-top: 50px;
         width: 100%;
     }
