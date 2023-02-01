@@ -1,0 +1,135 @@
+:root{
+    --Dark-green: #0B525B;
+    --light-orange:#F4A261;
+    --orange:#FF6700;
+    --text:white;
+    --light-text:rgba(255, 255, 255, 0.82);
+    --nav-color:#F4A261;
+    --hover-color-nav:#FF6700;
+    --hover-color-button:white;
+    --hover-color-button-text:#FF6700;
+    --invalid-color:red;
+    --big-title-56:3.5rem;
+    --line-height:0.666666667;
+    --sub-title-38:2.375rem;
+    --small-title-42:2.625rem;
+    --container-1237:77.3125rem;
+    --transition-delay-buttons:0.3s;
+    
+    /* --sub-title-TS:2.625rem;
+    --sub-title-LH-:0.666666667; */
+
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 100%;
+}
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+body{
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--Dark-green);
+    overflow-x: hidden;
+    color: white;
+}
+header{
+    margin-top: 30px;
+}
+.container{
+    width: calc(100% - 12.5rem);
+   
+    max-width: var(--container-1237);
+    margin-inline: auto;
+}
+
+.navigation{
+    width: 100%;
+display: grid;
+grid-template-columns: 50% 50%;
+
+}
+.logo{
+    width: 60px;
+    height: 60px;
+    grid-column-start: 1;
+  grid-column-end: 1;
+}
+.button-container{
+    display: flex;
+flex-direction: row;
+justify-content: flex-end;
+}
+.nav_button{
+ 
+    width: 89px;
+    height: 41px;
+    color: var(--text);
+    background-color: var(--light-orange);
+    border-radius: 20px;
+    border: none;
+    font-size: 1.3125em;
+    line-height: 1.5625em;
+    margin-left: 12px;
+    grid-column-start: 2;
+  grid-column-end: 2;
+  transition: var(--transition-delay-buttons);
+}
+.hambourger{
+    visibility: hidden;
+}
+    
+
+.nav_button:hover{
+    background-color: white;
+    color: var(--orange);
+    transform: scale(1.08);
+    transition: var(--transition-delay-buttons);
+}
+.footer_line{
+    margin-top: 40px;
+    display: block;
+    border: 0.5px solid var(--light-orange);
+    width: 100%;
+    height: 0px;
+
+}
+@media (max-width:30em)  { 
+    /* 480px */
+    .container{
+        width: calc(100% - 5rem );
+    }
+    .button-container{
+        visibility: hidden;
+    }
+    .hambourger{
+        visibility: visible;
+        z-index: 2;
+    }
+    .hambourger hr{
+
+        width: 42px;
+        height: 0px;
+        border: 1px solid #F4A261;
+    }
+}
+@media (max-width:50.625em) and (min-width:30em){
+    .container{
+        width: calc(100% - 5rem );
+    }
+    .button-container{
+        visibility: hidden;
+    }
+    .hambourger{
+        visibility: visible;
+        z-index: 2;
+    }
+    .hambourger hr{
+
+        width: 42px;
+        height: 0px;
+        border: 1px solid #F4A261;
+    }
+}
