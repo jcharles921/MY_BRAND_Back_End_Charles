@@ -15,6 +15,7 @@
     --small-title-42:2.625rem;
     --container-1237:77.3125rem;
     --transition-delay-buttons:0.3s;
+    --hambourger-back-color:#E5F9E0;
     
     /* --sub-title-TS:2.625rem;
     --sub-title-LH-:0.666666667; */
@@ -37,6 +38,12 @@ body{
 header{
     margin-top: 30px;
 }
+.hamburger_view{
+    visibility: hidden;
+    display: none;
+    z-index: -2;
+}
+
 .container{
     width: calc(100% - 12.5rem);
    
@@ -84,7 +91,9 @@ justify-content: flex-end;
 }
 .hambourger{
     visibility: hidden;
+    display: none;
 }
+
     
 
 .nav_button:hover{
@@ -507,6 +516,95 @@ background-position: center center;
 /*phones*/
 @media (max-width:30em)  { 
     /* 480px */
+    body{
+        overflow: hidden;
+
+    }
+    .hamburger_view {
+        filter: none;
+        /* visibility: visible;
+        position: fixed;
+        display: flex; */
+            height: 100vh;
+        z-index: 2;
+        
+        
+        width: 50%;
+        background-color: var(--hambourger-back-color);
+        margin-top: -36px;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        
+    
+    }
+    .hamburger_view div{
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+    }
+    .hamburger_view a{
+        margin-top: 60px;
+        text-decoration: none;
+        color: var(--Dark-green);
+        font-size: 1.375em;
+    }
+    .hamburger_view .Ham_button{
+        margin-top: -40px;
+        width: 170px;
+        height: 50px;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        background-color: var(--light-orange);
+        font-size: 1.25em;
+        transition: var(--transition-delay-buttons);
+        position: relative;
+        bottom: 43px;
+        transform:none;
+
+    }
+    .hamburger_view .Ham_button:hover{
+        background-color: white;
+        color: var(--orange);
+        transform: scale(1.08);
+        transition: var(--transition-delay-buttons);
+
+    }
+    .cross2{
+        margin-top: 0px;
+        visibility: visible;
+        display: inline;
+        z-index: 2;
+        width: 42px;
+        height: 0px;
+        border: 1px solid #F4A261;
+        transform: rotate(-45deg);
+    }
+     .cross{
+
+        width: 42px;
+        height: 0px;
+        border: 1px solid #F4A261;
+        transform: rotate(45deg);
+        position: relative;
+        top: 10px;
+    }
+    .hamburger_view hr{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-left: 50px;
+        
+ 
+    }
+    .Flexer_1{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+
+    }
     .container{
         width: calc(100% - 5rem );
     }
@@ -516,6 +614,7 @@ background-position: center center;
     .hambourger{
         visibility: visible;
         z-index: 2;
+        display: inline;
     }
     .hambourger hr{
 
@@ -523,6 +622,7 @@ background-position: center center;
         height: 0px;
         border: 1px solid #F4A261;
     }
+  
     .front-page{
         flex-direction: column;
         height: 409px;
@@ -706,15 +806,98 @@ background-position: center center;
 }
 /* tablets 481px-768px*/
 @media (max-width:50.625em) and (min-width:30em){
-    .container{
-        width: calc(100% - 5rem );
+
+    .hamburger_view {
+        filter: none;
+        /* visibility: visible;
+        position: fixed;
+        display: flex; */
+            height: 100vh;
+        z-index: 2;
+  
+
+        width: 50%;
+        background-color: var(--hambourger-back-color);
+        margin-top: -36px;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        
+    
     }
-    .button-container{
-        visibility: hidden;
+    .hamburger_view div{
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
     }
+    .hamburger_view a{
+        margin-top: 60px;
+        text-decoration: none;
+        color: var(--Dark-green);
+        font-size: 1.375em;
+    }
+    .hamburger_view .Ham_button{
+        margin-top: -40px;
+        width: 170px;
+        height: 50px;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        background-color: var(--light-orange);
+        font-size: 1.25em;
+        transition: var(--transition-delay-buttons);
+        position: relative;
+        bottom: 43px;
+        transform:none;
+
+    }
+    .hamburger_view .Ham_button:hover{
+        background-color: white;
+        color: var(--orange);
+        transform: scale(1.08);
+        transition: var(--transition-delay-buttons);
+
+    }
+    .cross2{
+        margin-top: 0px;
+        visibility: visible;
+        display: inline;
+        z-index: 2;
+        width: 42px;
+        height: 0px;
+        border: 1px solid #F4A261;
+        transform: rotate(-45deg);
+    }
+     .cross{
+
+        width: 42px;
+        height: 0px;
+        border: 1px solid #F4A261;
+        transform: rotate(45deg);
+        position: relative;
+        top: 10px;
+    }
+    .hamburger_view hr{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-left: 80px;
+        
+        /* align-items:flex-end; */
+    }
+    .Flexer_1{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+
+    }
+
+    
     .hambourger{
         visibility: visible;
         z-index: 2;
+        display: inline;
     }
     .hambourger hr{
 
@@ -722,6 +905,14 @@ background-position: center center;
         height: 0px;
         border: 1px solid #F4A261;
     }
+    .container{
+        width: calc(100% - 5rem );
+    }
+    .button-container{
+        visibility: hidden;
+    }
+
+
     .front-page{
         flex-direction: column;
         height: 409px;
@@ -898,3 +1089,12 @@ background-position: center center;
 
 
 }
+/* @media screen and (max-width: 768px) {
+    .hambourger_view{
+        visibility: hidden;
+        display: none;
+        z-index: -2;
+    }
+
+  } */
+ 
