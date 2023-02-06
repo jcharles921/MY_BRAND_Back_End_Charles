@@ -191,9 +191,11 @@ main{
 .Blog_container li{
     list-style-type: none;
 }
-.Title{
+.Blog_section{
     font-weight: 600;
-font-size: 20px;
+font-size: 17px;
+color: white;
+margin-bottom: 20px;
 }
 .post{
     background-color: var(--light-orange);
