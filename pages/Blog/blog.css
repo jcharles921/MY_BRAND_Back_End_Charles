@@ -166,9 +166,10 @@ font-size: 20px;
     
 }
 .postimage img{
-    height: 80%;
+    /* height: 80%; */
     width: 80%;
     border-radius: 10px;
+    min-width: 80px;
 }
 .postdescription{
     width: 70%;
@@ -191,7 +192,8 @@ font-size: clamp(0.9375rem, 0.8125rem + 0.625vw, 1.5625rem);
 .postdate{
     grid-column: 1;
     grid-row: 2;
-    font-size: 0.875em;
+    font-size: 0.6875rem;
+font-size: clamp(0.6875rem, 0.65rem + 0.1875vw, 0.875rem);
     font-weight: 600;
    
 }
@@ -201,6 +203,8 @@ font-size: clamp(0.9375rem, 0.8125rem + 0.625vw, 1.5625rem);
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 30% auto;
+    padding-bottom: 5px;
+    padding-right: 5px;
 
 }
 .likes_comments div{
@@ -208,18 +212,24 @@ font-size: clamp(0.9375rem, 0.8125rem + 0.625vw, 1.5625rem);
     justify-content: center;
 }
 .likes_comments img{
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 34px;
+    min-height: 34px;
+    margin-right: 3px;
 }
 .likes_comments p{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.6875rem;
+font-size: clamp(0.6875rem, 0.65rem + 0.1875vw, 0.875rem);
 
 }
 @media (max-width:30em)  { 
+
     /* 480px */
-   
+    .container{
+        width: calc(100% - 3.5rem );
+    }
     .hamburger_view {
         filter: none;
         /* visibility: visible;
@@ -310,6 +320,28 @@ font-size: clamp(0.9375rem, 0.8125rem + 0.625vw, 1.5625rem);
         width: 42px;
         height: 0px;
         border: 1px solid #F4A261;
+    }
+    .post{
+        height: calc(100% / 4);
+    }
+    .likes_comments{
+        min-width: 60px;
+        position: relative;
+        right: 28px;
+    }
+    .likes_comments img{
+        min-width: 28px;
+        min-height: 28px;
+    }
+    .post_title{
+        min-width: 80px;
+margin-left: 12px;
+    }
+    .postimage img{
+margin-left: 12px;
+    }
+    .postdate{
+        margin-left: 12px;
     }
  
  
@@ -317,7 +349,11 @@ font-size: clamp(0.9375rem, 0.8125rem + 0.625vw, 1.5625rem);
   
 }
 @media (max-width:50.625em) and (min-width:30em){
+    .container{
+        width: calc(100% - 5rem );
+    }
     .hamburger_view {
+        
         filter: none;
         /* visibility: visible;
         position: fixed;
@@ -408,6 +444,11 @@ font-size: clamp(0.9375rem, 0.8125rem + 0.625vw, 1.5625rem);
         height: 0px;
         border: 1px solid #F4A261;
     }
+    .likes_comments img{
+        min-width: 28px;
+        min-height: 28px;
+    }
+ 
   
 
 }

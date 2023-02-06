@@ -71,8 +71,8 @@ grid-template-columns: 50% 50%;
   grid-column-end: 1;
 }
 .bigtitle{
-    font-size: 2rem;
-font-size: clamp(2rem, 1.7rem + 1.5vw, 3.5rem);
+    font-size: 1.8125rem;
+    font-size: clamp(1.8125rem, 1.475rem + 1.6875vw, 3.5rem);
 text-decoration: none;
 color: var(--text);
 }
@@ -163,8 +163,8 @@ justify-content: flex-end;
 }
 .About .smalltitle{
     color: white;
-    font-size: 2.375rem;
-    font-size: clamp(2.375rem, 2.2083333333333335rem + 0.5555555555555556vw, 2.625rem);
+    font-size: 2.1875rem;
+    font-size: clamp(2.1875rem, 2.0625rem + 0.625vw, 2.8125rem);
 
 }
 .About_text{
@@ -175,7 +175,7 @@ justify-content: flex-end;
     color: white;
 }
 .About_2{
-    display: none;
+    display: flex;
 }
 #G1{
     animation: rotate 2.5s linear infinite;
@@ -353,6 +353,7 @@ background-position: center center;
     color: white;
 }
 .contact_me_1 input{
+    padding-left: 12px;
     width: 382px;
     height: 43px;
     color: white;
@@ -367,6 +368,7 @@ background-position: center center;
 
 }
 #message{
+    padding-left: 12px;
     width: 544px;
     height: 166px;
     color: white;
@@ -668,10 +670,11 @@ background-position: center center;
     }
     .front-page .subtitle {
         width: auto;
-        padding-left: 9px;
+       
         margin: 0px;
         font-size:1.3125em ;
         margin-top: 9px;
+        margin-top: 0px;
     }
     .front-page_1{
         display: flex;
@@ -679,6 +682,7 @@ background-position: center center;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: 100%;
     }
     .front-page_2{
         display: flex;
@@ -713,6 +717,7 @@ background-position: center center;
     }
     .About_2{
         visibility: hidden;
+        display: none;
     }
     .About img{
         visibility: hidden;
@@ -813,7 +818,7 @@ background-position: center center;
     }
 
 }
-/* tablets 481px-768px*/
+/* tablets 481px-810px*/
 @media (max-width:50.625em) and (min-width:30em){
 
     .hamburger_view {
@@ -960,6 +965,7 @@ background-position: center center;
         margin: 0px;
         font-size:1.3125em ;
         margin-top: 9px;
+        margin-top: 0px;
     }
     .front-page_1{
         padding-left: 0px;
@@ -1084,10 +1090,10 @@ background-position: center center;
         width: calc(100% - 4em);
     }
     .contact_me_1 input{
-        width:280px
+        width: 65%;
     }
     #message{
-        width:280px
+        width:65%;
     }
     .contact_me_2{
         width: 100%;
@@ -1098,12 +1104,26 @@ background-position: center center;
 
 
 }
-/* @media screen and (max-width: 768px) {
-    .hambourger_view{
-        visibility: hidden;
-        display: none;
-        z-index: -2;
+@media (min-width:811px) and (max-width: 1200px) {
+    .About{
+        width: 100%;
+    }
+    .About_2{
+        margin-left: 30px;
+    }
+    .About_2 #comp{
+        width: 200px;
     }
 
-  } */
+    .About_text{
+        width: 16.188em;
+
+    }
+    .work_done a{
+        width: 26%;
+    }
+    .work_done img{
+        width: 100%;
+    }
+  }
  
