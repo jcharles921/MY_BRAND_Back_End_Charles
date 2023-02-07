@@ -33,7 +33,7 @@ body{
     margin:0;
     font-family: 'Poppins', sans-serif;
     background-color: var(--Dark-green);
-    overflow-x: hidden;
+    overflow-x:none;
     margin-top: -22px;
 }
 header{
@@ -62,6 +62,7 @@ align-items: flex-end;
     width: 100%;
 display: grid;
 grid-template-columns: 50% 50%;
+overflow: hidden;
 
 }
 .logo{
@@ -95,6 +96,10 @@ justify-content: flex-end;
     grid-column-start: 2;
   grid-column-end: 2;
   transition: var(--transition-delay-buttons);
+  overflow: hidden;
+}
+.nav_button a{
+    overflow: hidden;
 }
 .hambourger{
     visibility: hidden;
@@ -179,9 +184,17 @@ justify-content: flex-end;
 }
 #G1{
     animation: rotate 2.5s linear infinite;
+    width: 15%;
+    
+    position: relative;
+    bottom: 69px;
+    right: 18px;
 }
 #G2{
     animation: rotate2 2.5s linear infinite;
+    width: 23%;
+    position: relative;
+    bottom: 100px;
 }
 #cloud{
     animation: giggle 1s ease-in-out infinite;
@@ -190,11 +203,15 @@ justify-content: flex-end;
     /* animation: rotateBounce 6s ease-in-out infinite; */
     animation: rotateEarth 10s linear infinite;
 }
+#mongodb{
+    overflow: hidden;
+}
 .icon-container {
     position: relative;
     left: 35.375em;
     animation: switchIcon 2s ease-in-out infinite;
     bottom: 99px;
+    overflow: hidden;
 }
 #DB1{
     position: absolute;
@@ -529,7 +546,14 @@ background-position: center center;
   }
 /*phones*/
 @media (max-width:30em)  { 
+    .icon-container{
+        display: none;
+    }
     /* 480px */
+    #cloud{
+        overflow: hidden;
+        display: none;
+    }
    
     .hamburger_view {
         filter: none;
@@ -681,13 +705,13 @@ background-position: center center;
         padding-left: 0px;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        width: 100%;
+ 
     }
     .front-page_2{
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow: hidden;
 
     }
     .profile{
@@ -735,13 +759,16 @@ background-position: center center;
     }
     .skills{
         visibility: hidden;
+        display: none;
     }
     .skills2{
+        padding-top: 124px;
         visibility: visible;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: -100px;
+        overflow: hidden;
     }
     .skills2 p{
         width: 107px;
@@ -820,6 +847,13 @@ background-position: center center;
 }
 /* tablets 481px-810px*/
 @media (max-width:50.625em) and (min-width:30em){
+    .icon-container{
+        display: none;
+    }
+    #cloud{
+        overflow: hidden;
+        display: none;
+    }
 
     .hamburger_view {
         filter: none;
@@ -1020,13 +1054,16 @@ background-position: center center;
     }
     .skills{
         visibility: hidden;
+        display: none;
     }
     .skills2{
+        padding-top: 124px;
         visibility: visible;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: -100px;
+        overflow: hidden;
     }
     .skills2 p{
         width: 107px;

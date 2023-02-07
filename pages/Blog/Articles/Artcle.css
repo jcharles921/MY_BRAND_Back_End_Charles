@@ -225,7 +225,9 @@ main{
 
 @media (max-width:30em)  { 
     /* 480px */
-   
+    .container{
+        width: calc(100% - 5rem);
+    }
     .hamburger_view {
         filter: none;
         /* visibility: visible;
@@ -323,6 +325,9 @@ main{
   
 }
 @media (max-width:50.625em) and (min-width:30em){
+    .container{
+        width: calc(100% - 5rem);
+    }
      
     .hamburger_view {
         filter: none;
