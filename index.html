@@ -13,24 +13,23 @@
 </head>
 <body>
     <!-- At some point at 2am, i was tired of naming flex_container so i started naming them Flexer -->
-    <div class="hamburger_view">
-        <div class="Flexer_1">
-            <div class="Flexer_2">
-                <hr class="cross">
-                <hr class="cross2">
+    <div class="hamburger_c">
+        <div class="hamburger_view">
+            <div class="Flexer_1">
+                <div class="Flexer_2">
+                    <hr class="cross">
+                    <hr class="cross2">
+                </div>
+                <a href="/pages/Login/Login.html">Login</a>
+                <a href="/pages/Blog/Blog.html">Blog</a>
+                <a href="/index.html#about_t">About</a>
+                <a href="/index.html">Home</a>
+    
             </div>
-            <a href="/index.html">Login</a>
-            <a href="#about_t">Blog</a>
-            <a href="./pages/Blog/Blog.html">About</a>
-            <a href="./pages/Login/Login.html">Home</a>
-
+            <div>
+                <a href="./assets/Docs/My CV.pdf" download="My CV.pdf"><button class="Ham_button">My Résumé</button></a>
+            </div>
         </div>
-        <div>
-            <a href="./assets/Docs/My CV.pdf" download="My CV.pdf"><button class="Ham_button">My Résumé</button></a>
-
-        </div>
-
-
     </div>
    <div class="container">
             <header >
@@ -75,10 +74,10 @@
                         <img id="DB2"  src="./assets/images/database2.svg" alt="">  
                     </div>           
                 </div>
-                <div style="display: flex;" class="About_2">
-                    <img src="./assets/images/computer.svg" alt="">
-                    <img style="position: relative;bottom: 100px;" id="G2" src="./assets/images/Gear2.svg" alt="">
-                    <img style="position: relative;bottom: 57px;right: 25px;" id="G1" src="./assets/images/Gear1.svg" alt="">
+                <div  class="About_2">
+                    <img id="comp" src="./assets/images/computer.svg" alt="">
+                    <img  id="G2" src="./assets/images/Gear2.svg" alt="">
+                    <img id="G1" src="./assets/images/Gear1.svg" alt="">
 
                 </div>
             </main>
@@ -87,7 +86,12 @@
                 <p class="subtitle">My Recent Works</p>
             </div>
             <div class="work_done">
-                <img src="./assets/images/desktop-preview 1.svg" alt=""><img src="./assets/images/desktop-preview 2.svg" alt=""><img src="./assets/images/desktop-preview 3.svg" alt="">
+              
+              <a href="https://jcharles921.github.io/blog_2/"><img src="./assets/images/desktop-preview 2.svg" alt=""></a>
+              <a href="https://jcharles921.github.io/Challenge_3/"><img src="./assets/images/desktop-preview 1.svg" alt=""></a>
+              <a href="https://jcharles921.github.io/challenge_4/"><img src="./assets/images/desktop-preview 3.svg" alt=""></a>  
+                
+                
             </div>
             <div style="margin-top: 100px;display:flex;flex-direction: row;justify-content: center;">
                 <p class="subtitle">My Skills</p>
@@ -143,9 +147,11 @@
                     <p class="title_contact">GET IN TOUCH</p>
                     <p class="text_contact" >Got a question or proposal, or just want to sat hello? Go ahead</p>
                     <input type="text" placeholder="Your name" name="" id="Name">
+                    <span id="output_name"></span>
                     <input type="text" placeholder="Your email" name="" id="Email">
-                    <span id="output"></span>
+                    <span id="output_email"></span>
                     <textarea name="" id="message" cols="30" rows="10" placeholder="Your message"></textarea>
+                    <span id="output_message"></span>
                     <button id="form" class="button_contact" onclick="test()">Send</button>
 
                 </div>

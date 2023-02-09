@@ -107,80 +107,7 @@ main{
     flex-direction: column;
     align-items: center;
 }
-.Login_box{
-    /* width: 450px; */
-    width: 31.250vw;
-    height: 458px;
-    background-color: white;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 70px;
-    margin-bottom: 70px;
 
-}
-.login_title{
-    font-size: 2.375em;
-    font-weight: 500;
-    margin-bottom: 35px;
-}
-.login_inputs{
-    display: flex;
-    flex-direction: column;
-}
-
-#password{
-    margin-top: 50px;
-}
-.login_inputs input{
-    border: none;
-    border-bottom: 1px solid var(--orange);
-
-    width: 22.778vw;
-    padding-bottom: 6px;
-    padding-left: 0px;
-}
-.login_inputs input::placeholder{
-    color: var(--Dark-green);
-    opacity: 1;
-    font-size: 1.2625em;
-    text-align: left;
-    
-}
-.login_submit{
-    margin-top: 70px;
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding-bottom: 6px;
-    padding-left: 0px;
-}
-.login_submit button{
-    width: 145px;
-    height: 52px;
-    font-size:1.2625em ;
-    background-color: var(--Dark-green);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    transition: var(--transition-delay-buttons);
-
-}
-.login_submit button:hover{
-    color: white;
-    background-color: var(--orange);
-    transition: var(--transition-delay-buttons);
-    transform: scale(1.08);
-    cursor: pointer;
-
-}
-.login_submit a{
-    color: var(--Dark-green);
-
-}
 .footer{
     width: 100%;
     height: 100px;
@@ -198,10 +125,199 @@ main{
     display: none;
     z-index: -2;
 }
+.article_section{
+    width: 100%;
+    /* height: 85vh; */
+    color: white;
+}
+.title_date{
+    margin-top: 120px;
+}
+.title_date input{
+    background-color: var(--Dark-green);
+    color: white;  
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    border-radius: 10px; 
+}
+.title{
+    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 0.95rem + 1.5vw, 2.75rem);
+    font-weight: 600;
+}
+.title input{
+    width: 50%;
+    height: 70px;
+    /* font-size: 1.45em; */
+    font-weight: 400;
+    
+    
+}
+.title input::placeholder{
+    
+    color: white;
+    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 0.95rem + 1.5vw, 2.75rem);
+    font-weight: 400;
+    opacity: 0.8;
+}
+.date{
+    margin-top: 8px;
+    font-size: 1.1875em;
+    font-weight: 600;
+    height: 35px;
+    border-radius: 5px; 
+}
+.Text{
+    margin-top: 80px;
+    margin-bottom: 68px;
+}
+.Text textarea{
+    background-color: var(--Dark-green);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    border-radius: 10px;
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.Text textarea::placeholder{
+    color: white;
+    font-size: 1.45em;
+    font-weight: 400;
+    opacity: 0.8;
+}
+.line{
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.59);
+    margin-top: 155px;
+   
+}
+.Blog_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    overflow-y: scroll;
+    height: 50vh;
+}
+.Blog_container li{
+    list-style-type: none;
+}
+.Blog_section{
+    font-weight: 600;
+font-size: 17px;
+color: white;
+margin-bottom: 20px;
+}
+.post{
+    background-color: var(--light-orange);
+    border-radius: 10px;
+    margin-bottom: 5px;
+    width:91%;
+    height: calc(100% / 3.1);
+    min-height: 105px;
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: row;
+}
+.post span{
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 100%;
+
+}
+.postimage{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+.postimage img{
+    height: 80%;
+    width: 80%;
+    border-radius: 10px;
+}
+.postdescription{
+    width: 70%;
+    display: grid;
+    grid-template-columns: 60% auto;
+    grid-template-rows: 60% 40%;
+    color: white;
+}
+.post_title{
+    grid-row: 1;
+    grid-column: 1;
+    font-weight: 600;
+    font-size: 0.9375rem;
+font-size: clamp(0.9375rem, 0.8125rem + 0.625vw, 1.5625rem);
+    margin-bottom: 0px;
+    display: flex;
+    align-items: last baseline;
+
+}
+.postdate{
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 0.875em;
+    font-weight: 600;
+   
+}
+.Control_post{
+   
+    grid-row-start: 1;
+    grid-row-end: 2;
+    /* min-width: 135px; */
+   
+    /* display: grid;
+    grid-template-columns: 50% 50%; */
+
+}
+.Control_post img{
+    margin-top: 25px;
+    margin-left: 10px;
+    min-width: 35px;
+    width: 5vw;
+}
+.insertimg{
+    width: 100%;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+  align-items: flex-end;
+
+}
+.insertimg a{
+    color:white;
+    text-decoration: underline;
+    margin-bottom: 15px;
+    font-size: small;
+}
+.Dropimg{
+    width: 180px;
+    height: 50px;
+    color: white;
+background-color: var(--light-orange);
+transition: var(--transition-delay-buttons);
+border-radius: 10px;
+border: none;
+font-size: 1.3125em;
+}
+.Dropimg:hover{
+    background-color: white;
+    color: var(--Dark-green);
+    transition: var(--transition-delay-buttons);
+
+}
 
 @media (max-width:30em)  { 
     /* 480px */
-   
+   .container{
+    width: calc(100% - 5rem);
+   }
     .hamburger_view {
         filter: none;
         /* visibility: visible;
@@ -293,24 +409,26 @@ main{
         height: 0px;
         border: 1px solid #F4A261;
     }
-    .Login_box{
-        width: 68.925vw ;
-    }
-    .login_inputs input{
-        width: 48.131vw;
-    }
+.title input{
+    height: 50px
+};
+.Text{
+    margin-top: 40px;
+}
+.insertimg{
+    align-items: center;
+}
 
 
   
 }
-@media (max-width:62.5em) and (min-width:30em){
-    .Login_box{
-        width: 68.925vw ;
-    }
-    .login_inputs input{
-        width: 48.131vw;
-    }
+@media (max-width:50.625em) and (min-width:30em){
+    .container{
+        width: calc(100% - 6rem);
+       }
+     
     .hamburger_view {
+        
         filter: none;
         /* visibility: visible;
         position: fixed;
@@ -401,5 +519,12 @@ main{
         height: 0px;
         border: 1px solid #F4A261;
     }
+    .insertimg{
+        align-items: center;
+    }
+
+
+
+
 
 }

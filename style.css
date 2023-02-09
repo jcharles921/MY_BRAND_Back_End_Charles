@@ -33,10 +33,17 @@ body{
     margin:0;
     font-family: 'Poppins', sans-serif;
     background-color: var(--Dark-green);
-    overflow-x: hidden;
+    overflow-x:none;
+    margin-top: -22px;
 }
 header{
     margin-top: 30px;
+}
+.hamburger_c{
+    width: 100%;
+display: flex;
+flex-direction: column;
+align-items: flex-end;
 }
 .hamburger_view{
     visibility: hidden;
@@ -55,6 +62,7 @@ header{
     width: 100%;
 display: grid;
 grid-template-columns: 50% 50%;
+overflow: hidden;
 
 }
 .logo{
@@ -64,8 +72,8 @@ grid-template-columns: 50% 50%;
   grid-column-end: 1;
 }
 .bigtitle{
-    font-size: 2rem;
-font-size: clamp(2rem, 1.7rem + 1.5vw, 3.5rem);
+    font-size: 1.8125rem;
+    font-size: clamp(1.8125rem, 1.475rem + 1.6875vw, 3.5rem);
 text-decoration: none;
 color: var(--text);
 }
@@ -88,6 +96,10 @@ justify-content: flex-end;
     grid-column-start: 2;
   grid-column-end: 2;
   transition: var(--transition-delay-buttons);
+  overflow: hidden;
+}
+.nav_button a{
+    overflow: hidden;
 }
 .hambourger{
     visibility: hidden;
@@ -103,7 +115,7 @@ justify-content: flex-end;
     transition: var(--transition-delay-buttons);
 }
 .front-page{
-    margin-top: 70px;
+    margin-top: 60px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -125,7 +137,7 @@ justify-content: flex-end;
     border: none;
     border-radius: 50px;
     background-color: var(--light-orange);
-    font-size: 2.25em;
+    font-size: 1.875em;
     transition: var(--transition-delay-buttons);
 }
 .front-page .resume:hover{
@@ -156,8 +168,8 @@ justify-content: flex-end;
 }
 .About .smalltitle{
     color: white;
-    font-size: 2.375rem;
-    font-size: clamp(2.375rem, 2.2083333333333335rem + 0.5555555555555556vw, 2.625rem);
+    font-size: 2.1875rem;
+    font-size: clamp(2.1875rem, 2.0625rem + 0.625vw, 2.8125rem);
 
 }
 .About_text{
@@ -168,13 +180,26 @@ justify-content: flex-end;
     color: white;
 }
 .About_2{
-    display: none;
+    display: flex;
+}
+#comp{
+    width: 322px;
+    height: auto;
 }
 #G1{
     animation: rotate 2.5s linear infinite;
+    width: 15%;
+    position: relative;
+    top: 140px;
+    right: 18px;
+    height: 50px;
 }
 #G2{
     animation: rotate2 2.5s linear infinite;
+    width: 23%;
+    position: relative;
+    top: 100px;
+    height: 62px;
 }
 #cloud{
     animation: giggle 1s ease-in-out infinite;
@@ -183,11 +208,15 @@ justify-content: flex-end;
     /* animation: rotateBounce 6s ease-in-out infinite; */
     animation: rotateEarth 10s linear infinite;
 }
+#mongodb{
+    overflow: hidden;
+}
 .icon-container {
     position: relative;
     left: 35.375em;
     animation: switchIcon 2s ease-in-out infinite;
     bottom: 99px;
+    overflow: hidden;
 }
 #DB1{
     position: absolute;
@@ -208,6 +237,11 @@ justify-content: flex-end;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    transition: var(--transition-delay-buttons);
+}
+.work_done img:hover{
+    transform: scale(0.9);
+    transition: var(--transition-delay-buttons);
 }
 .sec_end{
     margin-top: 100px;
@@ -341,6 +375,7 @@ background-position: center center;
     color: white;
 }
 .contact_me_1 input{
+    padding-left: 12px;
     width: 382px;
     height: 43px;
     color: white;
@@ -355,6 +390,7 @@ background-position: center center;
 
 }
 #message{
+    padding-left: 12px;
     width: 544px;
     height: 166px;
     color: white;
@@ -363,11 +399,11 @@ background-position: center center;
     background-color: var(--Dark-green);
     border: 1px solid var(--light-orange);
 }
-#output{
+.contact_me_1 span{
     color: red;
-    font-size: 23px;
+    font-size: 18px;
     margin-top: 8px;
-    margin-left: 99px;
+    margin-left: 40px;
 }
 .contact_me_1 textarea::placeholder{
     position: relative;
@@ -515,11 +551,15 @@ background-position: center center;
   }
 /*phones*/
 @media (max-width:30em)  { 
-    /* 480px */
-    body{
-        overflow: hidden;
-
+    .icon-container{
+        display: none;
     }
+    /* 480px */
+    #cloud{
+        overflow: hidden;
+        display: none;
+    }
+   
     .hamburger_view {
         filter: none;
         /* visibility: visible;
@@ -613,7 +653,7 @@ background-position: center center;
     }
     .hambourger{
         visibility: visible;
-        z-index: 2;
+       
         display: inline;
     }
     .hambourger hr{
@@ -659,22 +699,24 @@ background-position: center center;
     }
     .front-page .subtitle {
         width: auto;
-        padding-left: 9px;
+       
         margin: 0px;
         font-size:1.3125em ;
         margin-top: 9px;
+        margin-top: 0px;
     }
     .front-page_1{
         display: flex;
         padding-left: 0px;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+ 
     }
     .front-page_2{
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow: hidden;
 
     }
     .profile{
@@ -704,6 +746,7 @@ background-position: center center;
     }
     .About_2{
         visibility: hidden;
+        display: none;
     }
     .About img{
         visibility: hidden;
@@ -721,13 +764,16 @@ background-position: center center;
     }
     .skills{
         visibility: hidden;
+        display: none;
     }
     .skills2{
+        padding-top: 124px;
         visibility: visible;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: -100px;
+        overflow: hidden;
     }
     .skills2 p{
         width: 107px;
@@ -804,8 +850,15 @@ background-position: center center;
     }
 
 }
-/* tablets 481px-768px*/
+/* tablets 481px-810px*/
 @media (max-width:50.625em) and (min-width:30em){
+    .icon-container{
+        display: none;
+    }
+    #cloud{
+        overflow: hidden;
+        display: none;
+    }
 
     .hamburger_view {
         filter: none;
@@ -896,7 +949,7 @@ background-position: center center;
     
     .hambourger{
         visibility: visible;
-        z-index: 2;
+        
         display: inline;
     }
     .hambourger hr{
@@ -951,6 +1004,7 @@ background-position: center center;
         margin: 0px;
         font-size:1.3125em ;
         margin-top: 9px;
+        margin-top: 0px;
     }
     .front-page_1{
         padding-left: 0px;
@@ -1005,13 +1059,16 @@ background-position: center center;
     }
     .skills{
         visibility: hidden;
+        display: none;
     }
     .skills2{
+        padding-top: 124px;
         visibility: visible;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: -100px;
+        overflow: hidden;
     }
     .skills2 p{
         width: 107px;
@@ -1075,10 +1132,10 @@ background-position: center center;
         width: calc(100% - 4em);
     }
     .contact_me_1 input{
-        width:280px
+        width: 65%;
     }
     #message{
-        width:280px
+        width:65%;
     }
     .contact_me_2{
         width: 100%;
@@ -1089,12 +1146,26 @@ background-position: center center;
 
 
 }
-/* @media screen and (max-width: 768px) {
-    .hambourger_view{
-        visibility: hidden;
-        display: none;
-        z-index: -2;
+@media (min-width:811px) and (max-width: 1200px) {
+    .About{
+        width: 100%;
+    }
+    .About_2{
+        margin-left: 30px;
+    }
+    .About_2 #comp{
+        width: 200px;
     }
 
-  } */
+    .About_text{
+        width: 16.188em;
+
+    }
+    .work_done a{
+        width: 26%;
+    }
+    .work_done img{
+        width: 100%;
+    }
+  }
  
