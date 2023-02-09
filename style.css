@@ -129,7 +129,7 @@ justify-content: flex-end;
     margin-top: 105px;
 
 }
-.front-page .resume{
+/* .front-page_1    .resume{
     margin-top: 128px;
     width: 210px;
     height: 70px;
@@ -146,19 +146,24 @@ justify-content: flex-end;
     color: var(--orange);
     transform: scale(1.08);
     transition: var(--transition-delay-buttons);
-}
+} */
 .resume2{
     visibility: hidden;
 }
+.front-page_2{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-end;
+}
 .profile{
-    width: 51.250vw;
+    width: 100%;
     height: auto;
-    position: relative;
-    right: 45px;    
-    /* left: 45px; */
+  
 }
 .subtitle{
-    font-size: var(--sub-title-38);
+    font-size: 1.75rem;
+    font-size: clamp(1.75rem, 1.6625rem + 0.43750000000000006vw, 2.1875rem);
     color: white;
 }
 .About{
@@ -168,8 +173,8 @@ justify-content: flex-end;
 }
 .About .smalltitle{
     color: white;
-    font-size: 2.1875rem;
-    font-size: clamp(2.1875rem, 2.0625rem + 0.625vw, 2.8125rem);
+    font-size: 1.75rem;
+    font-size: clamp(1.75rem, 1.6625rem + 0.43750000000000006vw, 2.1875rem);
 
 }
 .About_text{
@@ -208,9 +213,7 @@ justify-content: flex-end;
     /* animation: rotateBounce 6s ease-in-out infinite; */
     animation: rotateEarth 10s linear infinite;
 }
-#mongodb{
-    overflow: hidden;
-}
+
 .icon-container {
     position: relative;
     left: 35.375em;
@@ -325,6 +328,7 @@ background-position: center center;
     background-image: url(./assets/images/mongodb.svg);
     background-repeat: no-repeat;
     background-position: center center;
+    min-width: 150px;
 }
 #mongodb:hover{
     background-image: url(./assets/images/mongodb_hover.svg);
@@ -367,7 +371,8 @@ background-position: center center;
 .contact_me_1 .title_contact{
     margin-top: 46px;
     margin-bottom: 0px;
-    font-size:2.875em ;
+font-size: 1.75rem;
+font-size: clamp(1.75rem, 1.525rem + 1.125vw, 2.875rem);
     color: white;
 }
 .contact_me_1 .text_contact{
@@ -673,7 +678,8 @@ background-position: center center;
     }
     .resume2{
         visibility: visible;
-        position: relative;
+        margin-top: 40px;
+       
         width: 170px;
         height: 50px;
         color: white;
@@ -682,7 +688,7 @@ background-position: center center;
         background-color: var(--light-orange);
         font-size: 1.25em;
         transition: var(--transition-delay-buttons);
-        bottom: 105px;
+        
         
     }
     .resume2:hover{
@@ -717,15 +723,18 @@ background-position: center center;
         flex-direction: column;
         align-items: center;
         overflow: hidden;
+        min-height: 450px;
+        margin-top: 50px;
+        margin-bottom: 50px;
 
     }
-    .profile{
+    /* .profile{
         right: 0px;
  
         bottom: 162px;
-    }
+    } */
     .About{
-        margin-top: 180px;
+        margin-top: 250px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -975,7 +984,7 @@ background-position: center center;
     }
     .resume2{
         visibility: visible;
-        position: relative;
+        margin-top: 40px;
         width: 170px;
         height: 50px;
         color: white;
@@ -984,7 +993,7 @@ background-position: center center;
         background-color: var(--light-orange);
         font-size: 1.25em;
         transition: var(--transition-delay-buttons);
-        bottom: 105px;
+        
         
     }
     .resume2:hover{
@@ -1018,8 +1027,8 @@ background-position: center center;
         align-items: center;
     }
     .profile{
-        right: 0px;
-        bottom: 162px;
+        max-width: 400px;
+
     }
     .About{
         margin-top: 180px;
