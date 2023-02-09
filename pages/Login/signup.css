@@ -133,6 +133,7 @@ main{
 
 .login_inputs input{
     border: none;
+    
     border-bottom: 1px solid var(--orange);
 
     width: 22.778vw;
@@ -146,6 +147,12 @@ main{
     font-size: 1.2625em;
     text-align: left;
     
+}
+.login_inputs span{
+    margin-top: -35px;
+    margin-bottom: 15px;
+    color: red;
+    font-size: 0.8rem;
 }
 .login_submit{
     margin-top: 70px;

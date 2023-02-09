@@ -13,3 +13,50 @@ hamburgerButton_close.addEventListener('click', function() {
   hamburgerView.style.visibility = 'none';
   hamburgerView.style.position = 'none';
 });
+//action to be done after validation of a form
+function submit(){
+  console.log("its submitted")
+}
+
+//  valitation form
+
+const form= document.getElementById('send');
+const email= document.getElementById('email');
+const pass = document.getElementById('password');
+const out_pass=document.getElementById('out_pass');
+const out=document.getElementById('out');
+
+form.addEventListener("click", function(event) {
+    console.log("clicked")
+  event.preventDefault();
+  let isValid = true;
+
+  const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  if (email.value === "" ) {
+    isValid=false;
+    out.innerHTML="Whoops, your email is missing";
+
+  }
+  else if(!emailRegex.test(email.value)) {
+    isValid = false;
+    out.innerHTML="Invalid Email ";
+  
+  }
+  else {
+    out.innerHTML="";
+  }
+
+  if (pass.value === "") {
+    isValid = false;
+    out_pass.innerHTML="Whoops, your password is missing";
+  } else {
+    out_pass.innerHTML="";
+  }
+
+  
+
+  if (isValid) {
+    submit();
+  }
+})
