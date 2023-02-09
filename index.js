@@ -1,9 +1,19 @@
+// collecting document elements
+
 const form = document.getElementById("form");
 const email = document.getElementById("Email");
-const name = document.getElementById("Name");
+const ton_nom = document.getElementById("Name");
 const message = document.getElementById("message");
-const out= document.getElementById("output");
+const out= document.getElementById("output_email");
+const out_name=document.getElementById("output_name");
+const out_message=document.getElementById("output_message");
 
+//action to be done after validation of a form
+function submit(){
+  console.log("its submitted")
+}
+
+//  valitation form
 form.addEventListener("click", function(event) {
     console.log("form")
   event.preventDefault();
@@ -11,37 +21,47 @@ form.addEventListener("click", function(event) {
 
   const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  if (email.value === "" || !emailRegex.test(email.value)) {
+  if (email.value === "" ) {
+    isValid=false;
+    email.style.borderColor = "red";
+    out.innerHTML="You must fill your email";
+
+  }
+  else if(!emailRegex.test(email.value)) {
     isValid = false;
     email.style.borderColor = "red";
     out.innerHTML="Invalid Email ";
-  } else {
+  
+  }
+  else {
     email.style.borderColor = "";
     out.innerHTML="";
   }
 
-  if (name.value === "") {
+  if (ton_nom.value === "") {
     isValid = false;
-    name.style.borderColor = "red";
+    ton_nom.style.borderColor = "red";
+    out_name.innerHTML="You must fill your name";
   } else {
-    name.style.borderColor = "";
+    ton_nom.style.borderColor = "";
+    out_name.innerHTML="";
   }
 
   if (message.value === "") {
     isValid = false;
     message.style.borderColor = "red";
+    out_message.innerHTML="You must fill your message";
   } else {
     message.style.borderColor = "";
+    out_message.innerHTML="";
   }
 
   if (isValid) {
-    console.log("its submitted")
+    submit();
   }
 })
 
-function submit(){
-    console.log("its submitted")
-}
+//tablet and  mobile navigation
 const hamburgerButton = document.querySelector('.hambourger');
 const hamburgerView = document.querySelector('.hamburger_view');
 
@@ -57,3 +77,5 @@ hamburgerButton_close.addEventListener('click', function() {
   hamburgerView.style.visibility = 'none';
   hamburgerView.style.position = 'none';
 });
+
+

@@ -182,19 +182,24 @@ justify-content: flex-end;
 .About_2{
     display: flex;
 }
+#comp{
+    width: 322px;
+    height: auto;
+}
 #G1{
     animation: rotate 2.5s linear infinite;
     width: 15%;
-    
     position: relative;
-    bottom: 69px;
+    top: 140px;
     right: 18px;
+    height: 50px;
 }
 #G2{
     animation: rotate2 2.5s linear infinite;
     width: 23%;
     position: relative;
-    bottom: 100px;
+    top: 100px;
+    height: 62px;
 }
 #cloud{
     animation: giggle 1s ease-in-out infinite;
@@ -394,11 +399,11 @@ background-position: center center;
     background-color: var(--Dark-green);
     border: 1px solid var(--light-orange);
 }
-#output{
+.contact_me_1 span{
     color: red;
-    font-size: 23px;
+    font-size: 18px;
     margin-top: 8px;
-    margin-left: 99px;
+    margin-left: 40px;
 }
 .contact_me_1 textarea::placeholder{
     position: relative;
