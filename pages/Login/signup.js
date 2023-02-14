@@ -29,7 +29,14 @@ hamburgerButton_close.addEventListener('click', function() {
 // Getting elements from the local Storage
 users = JSON.parse(localStorage.getItem('users')) || [];
 //not working verify if the email is already present
-let targetUser= users.find(user => user.email == email.value);
+let targetUser= ()=>{
+  for(i=0;i<users.length;i++){
+    if(users[i].email=== email.value){
+      console.log("already exit")
+      return true;
+    }
+  }
+}
 
 
 
@@ -48,6 +55,7 @@ function submit(){
   users.push(user);
   const stringUsers = JSON.stringify(users);
   localStorage.setItem('users', stringUsers);
+  window.location.href = '/pages/Login/Login.html';
 }
 
 //  valitation form
@@ -55,6 +63,7 @@ form.addEventListener("click", function(event) {
     console.log("clicked")
   event.preventDefault();
   let isValid = true;
+  
 
   const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -67,9 +76,9 @@ form.addEventListener("click", function(event) {
           out.innerHTML="Invalid Email ";
         }
        
-        else if(email.value === targetUser){
+        else if(targetUser() === true){
           isValid= false;
-          out.innerHTML="An account of the same email is already in";
+          out.innerHTML="An account of the same email already Exist ";
 
         }
         else {

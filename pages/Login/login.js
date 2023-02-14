@@ -1,3 +1,9 @@
+const form= document.getElementById('send');
+const email= document.getElementById('email');
+const pass = document.getElementById('password');
+const out_pass=document.getElementById('out_pass');
+const out=document.getElementById('out');
+
 // hamburger side navigation
 const hamburgerButton = document.querySelector('.hambourger');
 const hamburgerView = document.querySelector('.hamburger_view');
@@ -25,21 +31,18 @@ function submit(){
     localStorage.setItem('currentUser', JSON.stringify(targetUser))
     window.location.href = "/";
   } else if(targetUser && targetUser.password != pass.value) {
-    console.log('wrong password');
+    out_pass.innerHTML="Wrong Password !";
+    // window.location.href = '../user/user.html';
   } else {
     // user doesn't exist
-    console.log('not registered, go to signup?');
-    window.location.href = '../user/user.html';
+    out_pass.innerHTML="Not registered, go to signup?";
+    
   }
 }
 
 //  valitation form
 
-const form= document.getElementById('send');
-const email= document.getElementById('email');
-const pass = document.getElementById('password');
-const out_pass=document.getElementById('out_pass');
-const out=document.getElementById('out');
+
 
 form.addEventListener("click", function(event) {
     console.log("clicked")

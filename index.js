@@ -79,7 +79,7 @@ hamburgerButton_close.addEventListener('click', function() {
 });
 
 
-//Live demo on work done
+//Live demo on work done not working by the way
 const live =document.querySelectorAll('work_done');
 live.forEach((img,i)=>{
         img.addEventListener('mouseenter',()=>{
