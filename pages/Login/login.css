@@ -148,6 +148,9 @@ main{
     text-align: left;
     
 }
+.login_inputs span{
+    color: red;
+}
 .login_submit{
     margin-top: 70px;
     display: flex;

@@ -23,13 +23,13 @@ form.addEventListener("click", function(event) {
 
   if (email.value === "" ) {
     isValid=false;
-    email.style.borderColor = "red";
-    out.innerHTML="You must fill your email";
+    email.style.borderColor = "white";
+    out.innerHTML="You must fill your email !!";
 
   }
   else if(!emailRegex.test(email.value)) {
     isValid = false;
-    email.style.borderColor = "red";
+    email.style.borderColor = "white";
     out.innerHTML="Invalid Email ";
   
   }
@@ -40,8 +40,8 @@ form.addEventListener("click", function(event) {
 
   if (ton_nom.value === "") {
     isValid = false;
-    ton_nom.style.borderColor = "red";
-    out_name.innerHTML="You must fill your name";
+    ton_nom.style.borderColor = "white";
+    out_name.innerHTML="You must fill your name !!";
   } else {
     ton_nom.style.borderColor = "";
     out_name.innerHTML="";
@@ -49,8 +49,8 @@ form.addEventListener("click", function(event) {
 
   if (message.value === "") {
     isValid = false;
-    message.style.borderColor = "red";
-    out_message.innerHTML="You must fill your message";
+    message.style.borderColor = "white";
+    out_message.innerHTML="You must fill your message !!";
   } else {
     message.style.borderColor = "";
     out_message.innerHTML="";
@@ -79,3 +79,16 @@ hamburgerButton_close.addEventListener('click', function() {
 });
 
 
+//Live demo on work done not working by the way
+const live =document.querySelectorAll('work_done');
+live.forEach((img,i)=>{
+        img.addEventListener('mouseenter',()=>{
+          console.log("sommething")
+        live[i].classList.add('liver');
+        })
+        img.addEventListener('mouseleave',()=>{
+          live[i].classList.remove('liver');
+
+        })
+        
+})
