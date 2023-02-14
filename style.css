@@ -247,7 +247,14 @@ align-items: flex-end;
 .work_done img:hover{
     transform: scale(0.9);
     transition: var(--transition-delay-buttons);
+    opacity: 0.5;
 }
+.live p{
+    display: inline;
+    font-size:30px ;
+
+}
+
 .sec_end{
     margin-top: 100px;
 }

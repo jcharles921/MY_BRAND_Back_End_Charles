@@ -152,7 +152,7 @@ main{
     margin-top: -35px;
     margin-bottom: 15px;
     color: red;
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
 }
 .login_submit{
     margin-top: 70px;

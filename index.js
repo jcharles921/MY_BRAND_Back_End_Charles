@@ -79,3 +79,16 @@ hamburgerButton_close.addEventListener('click', function() {
 });
 
 
+//Live demo on work done
+const live =document.querySelectorAll('work_done');
+live.forEach((img,i)=>{
+        img.addEventListener('mouseenter',()=>{
+          console.log("sommething")
+        live[i].classList.add('liver');
+        })
+        img.addEventListener('mouseleave',()=>{
+          live[i].classList.remove('liver');
+
+        })
+        
+})

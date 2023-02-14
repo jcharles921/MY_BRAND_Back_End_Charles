@@ -1,21 +1,36 @@
+// hamburger side navigation
 const hamburgerButton = document.querySelector('.hambourger');
 const hamburgerView = document.querySelector('.hamburger_view');
-
 hamburgerButton.addEventListener('click', function() {
   hamburgerView.style.display = 'flex';
   hamburgerView.style.visibility = 'visible';
   hamburgerView.style.position = 'fixed';
 });
 const hamburgerButton_close = document.querySelector('.Flexer_2');
-
 hamburgerButton_close.addEventListener('click', function() {
   hamburgerView.style.display = 'none';
   hamburgerView.style.visibility = 'none';
   hamburgerView.style.position = 'none';
 });
+
+//Getting elements from the local Storage
+
+users = JSON.parse(localStorage.getItem('users')) || [];
 //action to be done after validation of a form
+
 function submit(){
   console.log("its submitted")
+  const targetUser = users.find(user => user.email == email.value);
+  if(targetUser && targetUser.password == pass.value) {
+    localStorage.setItem('currentUser', JSON.stringify(targetUser))
+    window.location.href = "/";
+  } else if(targetUser && targetUser.password != pass.value) {
+    console.log('wrong password');
+  } else {
+    // user doesn't exist
+    console.log('not registered, go to signup?');
+    window.location.href = '../user/user.html';
+  }
 }
 
 //  valitation form
@@ -60,3 +75,15 @@ form.addEventListener("click", function(event) {
     submit();
   }
 })
+//Login
+// const targetUser = users.find(user => user.email == email.value);
+// if(targetUser && targetUser.password == password.value) {
+//   localStorage.setItem('currentUser', JSON.stringify(targetUser))
+//   window.location.href = "../html/profile.html";
+// } else if(targetUser && targetUser.password != password.value) {
+//   alert('wrong password');
+// } else {
+//   // user doesn't exist
+//   alert('not registered, go to signup?');
+//   window.location.href = '../html/signup.html';
+// }

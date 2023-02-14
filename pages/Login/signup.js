@@ -1,3 +1,13 @@
+const form= document.getElementById('send'); //buttton send
+const email= document.getElementById('email'); //the email
+const pass = document.getElementById('password'); //the password
+const out_pass=document.getElementById('out_pass'); //error_password
+const out=document.getElementById('out'); //error email
+const userName=document.getElementById('userN');//user name
+const out_user=document.getElementById('out_user')//error user
+const out_conf=document.getElementById('out_conf'); //err_confirm password
+const confirmpass =document.getElementById('confirmpass') // just confirm the password
+
 
 //hamburger navigation
 const hamburgerButton = document.querySelector('.hambourger');
@@ -16,23 +26,31 @@ hamburgerButton_close.addEventListener('click', function() {
   hamburgerView.style.visibility = 'none';
   hamburgerView.style.position = 'none';
 });
-//action to be done after validation of a form
+// Getting elements from the local Storage
+users = JSON.parse(localStorage.getItem('users')) || [];
+//not working verify if the email is already present
+let targetUser= users.find(user => user.email == email.value);
+
+
+
+
+
+//action to be done after validation (signup)
 function submit(){
-  console.log("its submitted")
+   
+  console.log(" localstorage")
+  let user = {
+    name : userName.value,
+    email : email.value,
+    password :pass.value
+  };
+
+  users.push(user);
+  const stringUsers = JSON.stringify(users);
+  localStorage.setItem('users', stringUsers);
 }
 
 //  valitation form
-
-const form= document.getElementById('send'); //buttton send
-const email= document.getElementById('email'); //the email
-const pass = document.getElementById('password'); //the password
-const out_pass=document.getElementById('out_pass'); //error_password
-const out=document.getElementById('out'); //error email
-const user=document.getElementById('userN');//user name
-const out_user=document.getElementById('out_user')//error user
-const out_conf=document.getElementById('out_conf'); //err_confirm password
-const confirmpass =document.getElementById('confirmpass') // just confirm the password
-
 form.addEventListener("click", function(event) {
     console.log("clicked")
   event.preventDefault();
@@ -47,7 +65,14 @@ form.addEventListener("click", function(event) {
   else if(!emailRegex.test(email.value)) {
           isValid = false;
           out.innerHTML="Invalid Email ";
-        } else {
+        }
+       
+        else if(email.value === targetUser){
+          isValid= false;
+          out.innerHTML="An account of the same email is already in";
+
+        }
+        else {
           out.innerHTML="";
         }
 
@@ -62,7 +87,7 @@ form.addEventListener("click", function(event) {
 
 
 
-  if (user.value === "") {
+  if (userName.value === "") {
         isValid = false;
         out_user.innerHTML="Whoops, your Username is missing";
       } else {
@@ -87,3 +112,4 @@ form.addEventListener("click", function(event) {
     submit();
   }
 })
+
