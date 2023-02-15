@@ -39,6 +39,7 @@ body{
 }
 header{
     margin-top: 30px;
+    margin-bottom: 45px;
 }
 .hamburger_c{
     width: 100%;
@@ -130,9 +131,107 @@ main{
 .profile{
     display: flex;
     flex-direction: column;
-    align-items:center;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
 }
+.profile img{
+    width: 100px;
+    height: 100px;
+}
+.profile p{
+    color: white;
+    font-size: 1rem;
+    margin-left: 34px;
+}
+.welcome{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.welcome h2{
+    display: flex;
+    flex-direction: row;
+}
+.notification-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+}
+.notification_1{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    color: white;
+    
+}
+
+.notif_list{
+    width: 70%;
+    height: 60vh;
+    border: 1px solid white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+}
+.notification_2{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    color: white;
+}
+.members-list{
+    width: 70%;
+    height: 60vh;
+    border: 1px solid white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.members-list div{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+.members-list img{
+    position: relative;
+    top: 18px;
+}
+.notif{
+    margin-top: 15px;
+    width: 80%;
+    border: 1px solid white;
+    border-radius: 20px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.notif a{
+    text-decoration: none; color:white
+}
+
 
 @media (max-width:30em)  { 
     /* 480px */
