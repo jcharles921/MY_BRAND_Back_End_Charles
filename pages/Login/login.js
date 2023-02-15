@@ -29,7 +29,7 @@ function submit(){
   const targetUser = users.find(user => user.email == email.value);
   if(targetUser && targetUser.password == pass.value) {
     localStorage.setItem('currentUser', JSON.stringify(targetUser))
-    window.location.href = "/";
+    window.location.href = "/pages/User/user.html";
   } else if(targetUser && targetUser.password != pass.value) {
     out_pass.innerHTML="Wrong Password !";
     // window.location.href = '../user/user.html';
