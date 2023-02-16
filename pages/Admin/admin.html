@@ -55,15 +55,15 @@
     <main>
         <div class="article_section">
             <div class="title_date">
-                <div  class="title"><input placeholder="Insert Title" type="text" name="" id=""></div>
-                <div class="date"><input placeholder="Insert Date" type="date" name="" id=""></div>
+                <div  class="title"><input placeholder="Insert Title" type="text" name="" id="title"></div>
+                <div class="date"><input placeholder="Insert Date" type="date" name="" id="date"></div>
             </div>
             <div class="Text">
-                <textarea  placeholder="Insert Text" name="" id="" cols="160" rows="20"></textarea>
+                <textarea  placeholder="Insert Text" name="" id="text" cols="160" rows="20"></textarea>
             </div>
             <div class="insertimg">
-                <a><b>Insert Image 🔗</b></a>
-                <button class="Dropimg">Post</button>
+                <input id="image-pic" type="file"><b>Insert Image 🔗</b></input>
+                <button id="button" class="Dropimg">Post</button>
 
             </div>
 
@@ -71,6 +71,7 @@
         <hr class="line">
         <div class="Blog_section"> Blog Posts </div>
         <div class="Blog_container">
+            <ul id="out_post"></ul>
             <li class="post">
                 <span >
                     <div class="postimage">

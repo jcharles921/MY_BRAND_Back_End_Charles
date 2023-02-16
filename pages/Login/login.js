@@ -3,6 +3,8 @@ const email= document.getElementById('email');
 const pass = document.getElementById('password');
 const out_pass=document.getElementById('out_pass');
 const out=document.getElementById('out');
+const Supuser= "babouwitonze921@gmail.com";
+const Suppass="12345"
 
 // hamburger side navigation
 const hamburgerButton = document.querySelector('.hambourger');
@@ -27,9 +29,19 @@ users = JSON.parse(localStorage.getItem('users')) || [];
 function submit(){
   console.log("its submitted")
   const targetUser = users.find(user => user.email == email.value);
-  if(targetUser && targetUser.password == pass.value) {
+  if( email.value === Supuser && pass.value === Suppass){
+    window.location.href = "/pages/Admin/admin.html";
+    
+
+  }
+
+ else if(targetUser && targetUser.password == pass.value) {
     localStorage.setItem('currentUser', JSON.stringify(targetUser))
+
     window.location.href = "/pages/User/user.html";
+    session();
+    
+    
   } else if(targetUser && targetUser.password != pass.value) {
     out_pass.innerHTML="Wrong Password !";
     // window.location.href = '../user/user.html';
@@ -78,15 +90,15 @@ form.addEventListener("click", function(event) {
     submit();
   }
 })
-//Login
-// const targetUser = users.find(user => user.email == email.value);
-// if(targetUser && targetUser.password == password.value) {
-//   localStorage.setItem('currentUser', JSON.stringify(targetUser))
-//   window.location.href = "../html/profile.html";
-// } else if(targetUser && targetUser.password != password.value) {
-//   alert('wrong password');
-// } else {
-//   // user doesn't exist
-//   alert('not registered, go to signup?');
-//   window.location.href = '../html/signup.html';
-// }
+
+//current login user
+function session(){
+  let targetUser = users.find(user => user.email == email.value);
+  let currentUser={
+    name: targetUser.name,
+    email:targetUser.value
+
+  }
+  localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+}
