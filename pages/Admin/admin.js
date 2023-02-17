@@ -2,11 +2,12 @@
 const article_title= document.getElementById('title');
 const article_date= document.getElementById('date');
 const article_text= document.getElementById('text');
+const currentPostImage=document.getElementById('currentPostImage')
 
 const button= document.getElementById('button');
 const out_post= document.getElementById('out_post');
-const edit =document.getElementsByClassName('edit');
-const clear = document.getElementsByClassName('delete');
+// const edit =document.getElementsByClassName('edit');
+// const clear = document.getElementsByClassName('delete');
 
 //  Hamburger side navigation 
 const hamburgerButton = document.querySelector('.hambourger');
@@ -28,10 +29,12 @@ hamburgerButton_close.addEventListener('click', function() {
 
 // Displaying all the posts
 posts=JSON.parse(localStorage.getItem('post')) || [];
+if (!Array.isArray(posts)) {
+  posts = [];
+}
 function display(){
   // console.log(posts[0].image)
-            
-          if (posts !==[]){
+        
             for( i=0;i <posts.length;i++){
               out_post.innerHTML += ` <li class="post">
                       <span >
@@ -43,7 +46,7 @@ function display(){
                               <p class="post_title">${posts[i].title}</p>
                               <p class="postdate">${posts[i].date}</p>
                               <div class="Control_post">
-                                <a href="/pages/Blog/Articles/Article.html"><img src=${posts[i].edit} class="edit" alt=""></a> 
+                                <a><img src=${posts[i].edit} onclick="edit()" alt=""></a> 
                                   <img src=${posts[i].delete}  onclick="eliminate()"alt="">
                     
                               </div>
@@ -52,28 +55,28 @@ function display(){
                     </li>`
             }
           }
-}
 
 //Posting by storing in Localstorage
-let counter=0;
+
 
 
 button.addEventListener('click', ()=>{
+  let posts=JSON.parse(localStorage.getItem('post')) || [];
   const article_image= document.getElementById('image-pic').files[0];
 let reader = new FileReader();
     reader.readAsDataURL(article_image);
     let  temp =[];
-    counter+=1;
+  
  
  reader.onload=()=>{
   let article= {
     title: article_title.value,
     date: article_date.value,
-    text:article_text,
+    text:article_text.value,
     image: reader.result,
     delete: "/assets/images/Delete.svg",
-    edit: "/assets/images/Edit.svg",
-    number: counter
+    edit: "/assets/images/Edit.svg"
+   
 
   
   }
@@ -88,36 +91,40 @@ let reader = new FileReader();
   // display();
 })
 //DELETING POST
-function eliminate(){
+function eliminate(index){
   console.log(posts)
- 
-posts.forEach(element => {
-  
- console.log(posts.indexOf(element)) 
- 
-
-  
-});
-
+  posts.splice(index,1);
+  localStorage.setItem("post", JSON.stringify(posts) );
+  location.reload();
 }
 
-// let subarr = Array.from(clear)
-// console.log(subarr);
+// EDITING THE POST
+function edit(index){
+  location.reload();
+  posts.forEach(function(element,index) {
+   
+    article_text.value=element.text;
+article_date.value=element.date;
+article_title.value=element.title;
+ button.addEventListener('click',()=>{
+    let article_image= document.getElementById('image-pic').files[0];
+    let reader = new FileReader();
+        reader.readAsDataURL(article_image);
+     reader.onload=()=>{
+      element.text=article_text.value;
+      element.title=article_title.value;
+      element.date=article_date.date;
+      element.image=reader.result;
+      localStorage.setItem('post', JSON.stringify(element))
 
-// for(j=0;j<subarr.length;j++){
-//   subarr[j].onclick= function(){
-//     console.log("clicked delete")
+     }
+  }) 
+
     
-//     if(posts !==[]){
-//       posts.splice(index,j);
-//       localStorage.clear();
-//       localStorage.setItem('post',JSON.stringify(posts));
-//     }
+  });
 
 
-//   }
-// }
-
+}
 
 //Displaying post in the posts section
 window.onload=()=>{

@@ -17,16 +17,18 @@ hamburgerButton_close.addEventListener('click', function() {
 });
 window.onload=()=>{
   display();
+  posts=JSON.parse(localStorage.getItem('post')) || [];
 
 }
 posts=JSON.parse(localStorage.getItem('post')) || [];
+
 function display(){
   // console.log(posts[0].image)
             
           if (posts !==[]){
             for( i=0;i <posts.length;i++){
               out_post.innerHTML += `<li class="post">
-              <a href="/pages/Blog/Articles/Article.html">
+              <a onclick="currentPost()" >
                   <div class="postimage">
                       <img  src=${posts[i].image} alt="">
                   </div>
@@ -50,3 +52,30 @@ function display(){
             }
           }
 }
+
+function currentPost(){
+  posts.forEach(function(element,index) {
+    let pageArray=[]
+    let visitpage={
+      title:element.title,
+      text:element.text,
+      date:element.date,
+      comments:"",
+      likes:""
+    
+    }
+    pageArray.push(visitpage);
+    localStorage.setItem('pageArray',JSON.stringify(pageArray));
+    // window.location.href = "/pages/Blog/Articles/Article.html";
+
+
+  });
+
+  
+
+
+
+
+}
+
+//href="/pages/Blog/Articles/Article.html"
