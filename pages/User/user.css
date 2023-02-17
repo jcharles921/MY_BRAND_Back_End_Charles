@@ -217,6 +217,13 @@ main{
     position: relative;
     top: 18px;
 }
+.members-list span{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+}
 .notif{
     margin-top: 15px;
     width: 80%;

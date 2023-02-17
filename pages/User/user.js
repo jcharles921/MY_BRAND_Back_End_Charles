@@ -1,5 +1,6 @@
 const picture= document.getElementById('Profile_picture');
 const welcome= document.getElementById('welcome');
+const out_list=document.getElementById('out_list');
 
 
 
@@ -20,11 +21,13 @@ hamburgerButton_close.addEventListener('click', function() {
 
 //session user information 
 let userinfo= JSON.parse(localStorage.getItem('currentUser'));
-const storedPic= new Image();
-storedPic.src=userinfo.image;
+let users=JSON.parse(localStorage.getItem('users'));
+
+// const storedPic= new Image();
+// storedPic.src=userinfo.image;
 
 
-console.log(userinfo)
+// console.log(userinfo)
 window.onload=()=>{
     // if(userinfo.image=== null){
     //     picture.src="/assets/images/Icon_profile.svg"
@@ -33,4 +36,13 @@ window.onload=()=>{
     //     picture.src= storedPic;
     // }
     welcome.innerHTML=userinfo.name;
+    for(i=0;i<users.length;i++){
+      out_list.innerHTML=`<div> <li>${users[i].name.split(' ')[0]} <img src="/assets/images/Icon_profile.svg" alt=""></li>
+      </div> `
+
+    }
+    users.forEach(element => {
+      console.log(element.name)
+      
+    });
 }

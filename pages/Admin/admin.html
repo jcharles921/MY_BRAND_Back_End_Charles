@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
+    <!-- HAMBOUGER-SIDEBAR -->
     <div class="hamburger_c">
         <div class="hamburger_view">
             <div class="Flexer_1">
@@ -24,7 +25,6 @@
                 <a href="/pages/Blog/Blog.html">Blog</a>
                 <a href="/index.html#about_t">About</a>
                 <a href="/pages/Login/Login.html">Login</a>
-    
             </div>
             <div>
                 <a href="./assets/Docs/My CV.pdf" download="My CV.pdf"><button class="Ham_button">My Résumé</button></a>
@@ -33,6 +33,7 @@
     </div>
  <div class="container">
     <header >
+        <!-- NAVIGATIONS -->
         <nav>
             <div class="navigation">
                 <a href="/index.html"></a><img src="/assets/images/logo.svg" alt="" class="logo">
@@ -48,11 +49,10 @@
                     </div>
                 </div>
             </div>
-           
-
         </nav>
     </header>
     <main>
+        <!-- TITLE AND DATE -->
         <div class="article_section">
             <div class="title_date">
                 <div  class="title"><input placeholder="Insert Title" type="text" name="" id="title"></div>
@@ -71,24 +71,26 @@
         <hr class="line">
         <div class="Blog_section"> Blog Posts </div>
         <div class="Blog_container">
-            <ul id="out_post"></ul>
-            <li class="post">
-                <span >
-                    <div class="postimage">
-                        <img  src="/assets/images/simple.svg" alt="">
-                    </div>
-                    
-                    <div class="postdescription">
-                        <p class="post_title">Introduction to C programming</p>
-                        <p class="postdate">22/01/2023</p>
-                        <div class="Control_post">
-                           <a href="/pages/Blog/Articles/Article.html"><img src="/assets/images/Edit.svg" alt=""></a> 
-                            <img src="/assets/images/Delete.svg" alt="">
-
+            <ul  id="out_post">
+                <li class="post">
+                    <span >
+                        <div class="postimage">
+                            <img  src="/assets/images/simple.svg" alt="">
                         </div>
-                    </div>
-                </span>
-            </li>
+                        
+                        <div class="postdescription">
+                            <p class="post_title">Introduction to C programming</p>
+                            <p class="postdate">22/01/2023</p>
+                            <div class="Control_post">
+                               <a href="/pages/Blog/Articles/Article.html"><img src="/assets/images/Edit.svg" id="edit" alt=""></a> 
+                                <img src="/assets/images/Delete.svg" id="clear" alt="">
+    
+                            </div>
+                        </div>
+                    </span>
+                </li>
+            </ul>
+            
             
             
         </div>
