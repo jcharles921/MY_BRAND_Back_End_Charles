@@ -306,6 +306,7 @@ font-size: clamp(0.9375rem, 0.8125rem + 0.625vw, 1.5625rem);
     font-size: small;
 }
 .Dropimg{
+    
     width: 180px;
     height: 50px;
     color: white;
@@ -320,6 +321,30 @@ font-size: 1.3125em;
     color: var(--Dark-green);
     transition: var(--transition-delay-buttons);
 
+}
+.update{
+    display: none;
+    
+    margin-top: 20px;
+    width: 180px;
+    height: 50px;
+    color: white;
+background-color: var(--light-orange);
+transition: var(--transition-delay-buttons);
+border-radius: 10px;
+border: none;
+font-size: 1.3125em;
+}
+.update:hover{
+    background-color: white;
+    color: var(--Dark-green);
+    transition: var(--transition-delay-buttons);
+
+}
+#currentPostImage{
+    display: none;
+    margin-top: 50px;
+    width: 300px;
 }
 
 @media (max-width:30em)  { 

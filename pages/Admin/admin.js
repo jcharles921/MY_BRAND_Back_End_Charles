@@ -2,8 +2,8 @@
 const article_title= document.getElementById('title');
 const article_date= document.getElementById('date');
 const article_text= document.getElementById('text');
-const currentPostImage=document.getElementById('currentPostImage')
-
+const currentPostImage=document.getElementById('currentPostImage');
+const buttonUpdate=document.getElementById('buttonUpdate');
 const button= document.getElementById('button');
 const out_post= document.getElementById('out_post');
 // const edit =document.getElementsByClassName('edit');
@@ -46,7 +46,7 @@ function display(){
                               <p class="post_title">${posts[i].title}</p>
                               <p class="postdate">${posts[i].date}</p>
                               <div class="Control_post">
-                                <a><img src=${posts[i].edit} onclick="edit()" alt=""></a> 
+                                <a><img data-num=${i} src=${posts[i].edit} class='Edit' onclick="edit()" alt=""></a> 
                                   <img src=${posts[i].delete}  onclick="eliminate()"alt="">
                     
                               </div>
@@ -58,16 +58,11 @@ function display(){
 
 //Posting by storing in Localstorage
 
-
-
 button.addEventListener('click', ()=>{
   let posts=JSON.parse(localStorage.getItem('post')) || [];
   const article_image= document.getElementById('image-pic').files[0];
 let reader = new FileReader();
     reader.readAsDataURL(article_image);
-    let  temp =[];
-  
- 
  reader.onload=()=>{
   let article= {
     title: article_title.value,
@@ -75,21 +70,59 @@ let reader = new FileReader();
     text:article_text.value,
     image: reader.result,
     delete: "/assets/images/Delete.svg",
-    edit: "/assets/images/Edit.svg"
-   
-
-  
+    edit: "/assets/images/Edit.svg",  
   }
+
  
   posts.push(article);
   console.log(posts);
   localStorage.setItem('post',JSON.stringify(posts));
-  
+ }
+ 
+ location.reload()
+})
 
+//UPDATE
+buttonUpdate.addEventListener('click', ()=>{
+  let posts=JSON.parse(localStorage.getItem('post')) || [];
+  const article_image= document.getElementById('image-pic').files[0];
+let reader = new FileReader();
+    reader.readAsDataURL(article_image);
+ reader.onload=()=>{
+  let article= {
+    title: article_title.value,
+    date: article_date.value,
+    text:article_text.value,
+    image: reader.result,
+    delete: "/assets/images/Delete.svg",
+    edit: "/assets/images/Edit.svg",
+  }
+  posts.push(article);
+  console.log(posts);
+  localStorage.setItem('post',JSON.stringify(posts));
  }
  location.reload();
   // display();
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //DELETING POST
 function eliminate(index){
   console.log(posts)
@@ -99,35 +132,48 @@ function eliminate(index){
 }
 
 // EDITING THE POST
-function edit(index){
-  location.reload();
-  posts.forEach(function(element,index) {
-   
-    article_text.value=element.text;
-article_date.value=element.date;
-article_title.value=element.title;
- button.addEventListener('click',()=>{
-    let article_image= document.getElementById('image-pic').files[0];
-    let reader = new FileReader();
-        reader.readAsDataURL(article_image);
-     reader.onload=()=>{
-      element.text=article_text.value;
-      element.title=article_title.value;
-      element.date=article_date.date;
-      element.image=reader.result;
-      localStorage.setItem('post', JSON.stringify(element))
+function edit(){
+  const Edit = document.getElementsByClassName('Edit');
+  let arrEdit = Array.from(Edit)
+  arrEdit.forEach((e) => {
+    e.addEventListener('click',()=>{
+      console.log("HIGH")
+      buttonUpdate.style.display = 'block';
+      button.style.display="none";
+      let myid=e.dataset.num;
+      console.log(posts[myid])
+      // posts=JSON.parse(localStorage.getItem('post'));
+      for(let i=0;i<=posts.length;i++){
+        
+          if(myid==i){
+            article_text.value=posts[i].text;
+            article_date.value=posts[i].date;
+            article_title.value=posts[i].title;
+            currentPostImage.style.display="block"
+            currentPostImage.src=posts[i].image;
+            posts.splice(myid, 1);
+            localStorage.setItem("post", JSON.stringify(posts));
+            // location.reload();
+            display();
+            
 
-     }
-  }) 
 
+          }
+      }
+    })
     
   });
+
+
 
 
 }
 
 //Displaying post in the posts section
 window.onload=()=>{
+  article_text.value="";
+  article_date.value="";
+  article_title.value="";
 display();
 
 }

@@ -139,7 +139,8 @@ main{
 
     width: 22.778vw;
     padding-bottom: 6px;
-    padding-left: 0px;
+    padding-left: 6px;
+    outline: none;
 }
 .login_inputs input::placeholder{
     color: var(--Dark-green);
