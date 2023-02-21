@@ -28,6 +28,35 @@ function display(){
           if (posts !==[]){
             for( i=0;i <posts.length;i++){
               out_post.innerHTML += `<li class="post">
+              <span>
+                  <a href="/pages/Blog/Articles/Article.html">
+                  <div class="postimage">
+                  <img  src=${posts[i].image} alt="">
+                  </div>
+                 
+                  
+                  <div class="postdescription">
+                  <p class="post_title">${posts[i].title}</p> </a>
+                      <p class="postdate">${posts[i].date}</p>
+                      <div class="likes_comments">
+                          <div>
+                              <img src="/assets/images/chat.svg" alt="">
+                              <img src="/assets/images/likes.svg" alt="">
+                          </div>
+                          <div>
+                              <p style="right: 45px;">3</p>
+                              <p style="right: 15px;">4</p>     
+                          </div>
+              
+                      </div>
+                  </div>
+              </span>
+              </li>`
+            }
+          }
+}
+
+{/* <li class="post">
               <a onclick="currentPost()" >
                   <div class="postimage">
                       <img  src=${posts[i].image} alt="">
@@ -35,7 +64,7 @@ function display(){
                   
                   <div class="postdescription">
                       <p class="post_title">${posts[i].title}</p>
-                      <p class="postdate">${posts[i].date}</p>
+                      <p class="postdate"></p>
                       <div class="likes_comments">
                           <div>
                               <img src="/assets/images/chat.svg" alt="">
@@ -48,10 +77,8 @@ function display(){
                       </div>
                   </div>
               </a>
-              </li> `
-            }
-          }
-}
+              </li>  */}
+
 
 function currentPost(){
   posts.forEach(function(element,index) {
