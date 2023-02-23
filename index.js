@@ -10,7 +10,23 @@ const out_message=document.getElementById("output_message");
 
 //action to be done after validation of a form
 function submit(){
-  console.log("its submitted")
+  console.log("its submitted");
+  let allQueries=JSON.parse(localStorage.getItem("allQueries")) || [];
+  let currentTime = new Date();
+  // time = currentTime.getTime();
+  // hours = currentTime.getHours();
+  let theQuery={
+    email: email.value,
+    ton_nom: ton_nom.value,
+    message: message.value,
+    time: currentTime
+  }
+  allQueries.push(theQuery);
+  console.log(theQuery);
+  localStorage.setItem("allQueries", JSON.stringify(allQueries));
+  email.value="";
+  ton_nom.value="";
+  message.value="";
 }
 
 //  valitation form
@@ -80,15 +96,16 @@ hamburgerButton_close.addEventListener('click', function() {
 
 
 //Live demo on work done not working by the way
-const live =document.querySelectorAll('work_done');
-live.forEach((img,i)=>{
-        img.addEventListener('mouseenter',()=>{
-          console.log("sommething")
-        live[i].classList.add('liver');
-        })
-        img.addEventListener('mouseleave',()=>{
-          live[i].classList.remove('liver');
+// const live =document.querySelectorAll('work_done');
+// live.forEach((img,i)=>{
+//         img.addEventListener('mouseenter',()=>{
+//           console.log("sommething")
+//         live[i].classList.add('liver');
+//         })
+//         img.addEventListener('mouseleave',()=>{
+//           live[i].classList.remove('liver');
 
-        })
+//         })
         
-})
+// })
+

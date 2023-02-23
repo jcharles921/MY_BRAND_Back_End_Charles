@@ -6,9 +6,6 @@ const currentPostImage=document.getElementById('currentPostImage');
 const buttonUpdate=document.getElementById('buttonUpdate');
 const button= document.getElementById('button');
 const out_post= document.getElementById('out_post');
-// const edit =document.getElementsByClassName('edit');
-// const clear = document.getElementsByClassName('delete');
-
 //  Hamburger side navigation 
 const hamburgerButton = document.querySelector('.hambourger');
 const hamburgerView = document.querySelector('.hamburger_view');
@@ -18,23 +15,17 @@ hamburgerButton.addEventListener('click', function() {
   hamburgerView.style.position = 'fixed';
 });
 const hamburgerButton_close = document.querySelector('.Flexer_2');
-
 hamburgerButton_close.addEventListener('click', function() {
   hamburgerView.style.display = 'none';
   hamburgerView.style.visibility = 'none';
   hamburgerView.style.position = 'none';
 });
-
-
-
 // Displaying all the posts
 posts=JSON.parse(localStorage.getItem('post')) || [];
 if (!Array.isArray(posts)) {
   posts = [];
 }
-function display(){
-  // console.log(posts[0].image)
-        
+function display(){        
             for( i=0;i <posts.length;i++){
               out_post.innerHTML += ` <li class="post">
                       <span >
@@ -57,7 +48,6 @@ function display(){
           }
 
 //Posting by storing in Localstorage
-
 button.addEventListener('click', ()=>{
   let posts=JSON.parse(localStorage.getItem('post')) || [];
   const article_image= document.getElementById('image-pic').files[0];
@@ -72,17 +62,14 @@ let reader = new FileReader();
     delete: "/assets/images/Delete.svg",
     edit: "/assets/images/Edit.svg",  
   }
-
- 
   posts.push(article);
   console.log(posts);
   localStorage.setItem('post',JSON.stringify(posts));
  }
- 
  location.reload()
 })
 
-//UPDATE
+//UPDATE POST 
 buttonUpdate.addEventListener('click', ()=>{
   let posts=JSON.parse(localStorage.getItem('post')) || [];
   const article_image= document.getElementById('image-pic').files[0];
@@ -105,24 +92,6 @@ let reader = new FileReader();
   // display();
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //DELETING POST
 function eliminate(index){
   console.log(posts)
@@ -137,7 +106,7 @@ function edit(){
   let arrEdit = Array.from(Edit)
   arrEdit.forEach((e) => {
     e.addEventListener('click',()=>{
-      console.log("HIGH")
+      // console.log("HIGH")
       buttonUpdate.style.display = 'block';
       button.style.display="none";
       let myid=e.dataset.num;
@@ -153,11 +122,7 @@ function edit(){
             currentPostImage.src=posts[i].image;
             posts.splice(myid, 1);
             localStorage.setItem("post", JSON.stringify(posts));
-            // location.reload();
             display();
-            
-
-
           }
       }
     })
@@ -168,6 +133,28 @@ function edit(){
 
 
 }
+//display all queries
+const queries_out= document.getElementById("queries");
+const queries=()=>{
+  let allQueries=JSON.parse(localStorage.getItem("allQueries")) || [];
+  for(i=0;i<allQueries.length;i++){
+    let date= allQueries[i].time;
+    let day_hours= date.split("T")
+
+    if(allQueries==[]){
+      queries_out.innerHTML+=`<h2 style="color:white;">No message for you !!</h2>`;
+      break;
+    }
+    else{
+      queries_out.innerHTML+=`<span>
+                                  <h3>${allQueries[i].ton_nom}</h3>
+                                  <p>${day_hours}</p>
+                                  <textarea rows="4" cols="50">${allQueries[i].message}</textarea>
+                              </span>`;
+    }
+  }
+
+}
 
 //Displaying post in the posts section
 window.onload=()=>{
@@ -175,5 +162,5 @@ window.onload=()=>{
   article_date.value="";
   article_title.value="";
 display();
-
+queries();
 }
