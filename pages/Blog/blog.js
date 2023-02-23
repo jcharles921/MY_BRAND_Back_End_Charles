@@ -15,11 +15,7 @@ hamburgerButton_close.addEventListener('click', function() {
   hamburgerView.style.visibility = 'none';
   hamburgerView.style.position = 'none';
 });
-window.onload=()=>{
-  display();
-  posts=JSON.parse(localStorage.getItem('post')) || [];
 
-}
 posts=JSON.parse(localStorage.getItem('post')) || [];
 
 function display(){
@@ -29,7 +25,7 @@ function display(){
             for( i=0;i <posts.length;i++){
               out_post.innerHTML += `<li class="post">
               <span>
-                  <a href="/pages/Blog/Articles/Article.html">
+                  <a data-num=${i} class="blogpost" >
                   <div class="postimage">
                   <img  src=${posts[i].image} alt="">
                   </div>
@@ -54,6 +50,7 @@ function display(){
               </li>`
             }
           }
+          currentPost();
 }
 
 {/* <li class="post">
@@ -81,22 +78,52 @@ function display(){
 
 
 function currentPost(){
-  posts.forEach(function(element,index) {
-    let pageArray=[]
-    let visitpage={
-      title:element.title,
-      text:element.text,
-      date:element.date,
-      comments:"",
-      likes:""
+  const current= document.getElementsByClassName("blogpost");
+  let arrCurrent=Array.from(current);
+  arrCurrent.forEach((e)=>{
+    e.addEventListener('click',()=>{
+                                          let pageArray=[]
+                                    let myid=e.dataset.num;
+                                    // console.log(posts[myid])
+                                     for(i=0;i<posts.length;i++){
+                                      if(myid==i){
+                                        let visitpage={
+                                          title:posts[i].title,
+                                          text:posts[i].text,
+                                          date:posts[i].date,
+                                          comments:"",
+                                          likes:""
+                                        
+                                        }
+                                        pageArray.push(visitpage);
+                                      }
+
+
+                                     }
+                                     console.log(pageArray);
+                                        localStorage.setItem('pageArray',JSON.stringify(pageArray));
+                                        window.location.href = "/pages/Blog/Articles/Article.html";
+
+
+                                  })
+  })
+
+  // posts.forEach(function(element,index) {
+  //   let pageArray=[]
+  //   let visitpage={
+  //     title:element.title,
+  //     text:element.text,
+  //     date:element.date,
+  //     comments:"",
+  //     likes:""
     
-    }
-    pageArray.push(visitpage);
-    localStorage.setItem('pageArray',JSON.stringify(pageArray));
-    // window.location.href = "/pages/Blog/Articles/Article.html";
+  //   }
+  //   pageArray.push(visitpage);
+  //   localStorage.setItem('pageArray',JSON.stringify(pageArray));
+  //   // window.location.href = "/pages/Blog/Articles/Article.html";
 
 
-  });
+  // });
 
   
 
@@ -106,3 +133,10 @@ function currentPost(){
 }
 
 //href="/pages/Blog/Articles/Article.html"
+window.onload=()=>{
+  
+  posts=JSON.parse(localStorage.getItem('post')) || [];
+  display();
+ 
+
+}

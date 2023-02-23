@@ -25,6 +25,7 @@
 html{
     box-sizing: border-box;
     font-size: 100%;
+    
 }
 *,*::before,*::after{
     box-sizing: inherit;
@@ -34,7 +35,6 @@ body{
     font-family: 'Poppins', sans-serif;
     background-color: var(--Dark-green);
     overflow-x: hidden;
-    color: #0B525B;
     margin-top: -22px;
 }
 header{
@@ -131,7 +131,7 @@ main{
     color: white;
 }
 .title_date{
-    margin-top: 120px;
+    margin-top: 50px;
 }
 .title_date input{
     background-color: var(--Dark-green);
@@ -160,11 +160,10 @@ main{
     font-weight: 400;
     opacity: 0.8;
 }
-.date{
+.date input{
     margin-top: 8px;
-    font-size: 1.1875em;
-    font-weight: 600;
-    height: 35px;
+ 
+
     border-radius: 5px; 
 }
 .Text{
@@ -213,9 +212,6 @@ main{
     flex-direction: column;
 }
 .Blog_section{
-    font-weight: 600;
-font-size: 17px;
-color: white;
 margin-bottom: 20px;
 }
 .post{
@@ -346,7 +342,46 @@ font-size: 1.3125em;
     margin-top: 50px;
     width: 300px;
 }
+#queries{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    
+    gap: 30px;
+    width: 100%;
+    color: white;
+   
+}
+#queries span{
+    border: 1px solid white;
+    border-radius: 20px;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    padding-left:30px;
 
+}
+#queries h3{
+    max-width: 22.5rem;
+    font-size: 1.1875rem;
+    font-weight: 600;
+    line-height: 14px;
+}
+#queries p{
+    max-width: 19.5rem;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    line-height: 14px;
+}
+#queries textarea{
+    max-width: 19.5rem;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    line-height: 14px;
+    color: white;
+    border: none;
+    background-color: var(--Dark-green);
+    overflow: hidden;
+}
 @media (max-width:30em)  { 
     /* 480px */
    .container{
