@@ -37,8 +37,8 @@ function display(){
                               <p class="post_title">${posts[i].title}</p>
                               <p class="postdate">${posts[i].date}</p>
                               <div class="Control_post">
-                                <a><img data-num=${i} src=${posts[i].edit} class='Edit' onclick="edit()" alt=""></a> 
-                                  <img src=${posts[i].delete}  onclick="eliminate()"alt="">
+                                <img data-num=${i} src=${posts[i].edit} class='Edit' onclick="edit()" alt="">
+                                  <img src=${posts[i].delete} class='Delete' onclick="elimination()" data-num=${i} "alt="">
                     
                               </div>
                           </div>
@@ -55,12 +55,17 @@ let reader = new FileReader();
     reader.readAsDataURL(article_image);
  reader.onload=()=>{
   let article= {
-    title: article_title.value,
-    date: article_date.value,
-    text:article_text.value,
+    title: document.getElementById('title').value,
+    date: document.getElementById('date').value,
+    text:document.getElementById('text').value,
+    // title: article_title.value,
+    // date: article_date.value,
+    // text:article_text.value,
     image: reader.result,
     delete: "/assets/images/Delete.svg",
-    edit: "/assets/images/Edit.svg",  
+    edit: "/assets/images/Edit.svg",
+    comments:[],
+    likes:""
   }
   posts.push(article);
   console.log(posts);
@@ -77,10 +82,14 @@ let reader = new FileReader();
     reader.readAsDataURL(article_image);
  reader.onload=()=>{
   let article= {
-    title: article_title.value,
-    date: article_date.value,
-    text:article_text.value,
+    title: document.getElementById('title').value,
+    date: document.getElementById('date').value,
+    text:document.getElementById('text').value,
     image: reader.result,
+    // title: article_title.value,
+    // date: article_date.value,
+    // text:article_text.value,
+    // image: reader.result,
     delete: "/assets/images/Delete.svg",
     edit: "/assets/images/Edit.svg",
   }
@@ -91,14 +100,38 @@ let reader = new FileReader();
  location.reload();
   // display();
 })
+// DELETING POST
+const Delete= document.getElementsByClassName('Delete');
 
-//DELETING POST
-function eliminate(index){
-  console.log(posts)
-  posts.splice(index,1);
-  localStorage.setItem("post", JSON.stringify(posts) );
-  location.reload();
+function elimination(){
+  var arrDelete= Array.from(Delete);
+
+
+arrDelete.forEach((e) => {
+  e.addEventListener('click',()=>{
+    console.log("hello")
+  document.getElementById('confirmation').style.display="flex";
+  ;
+  ;
+  document.getElementById('yes').addEventListener('click', ()=>{
+    let myid=e.dataset.num;
+    console.log(myid)
+    posts.splice(myid, 1);
+    localStorage.setItem("post", JSON.stringify(posts));
+    location.reload();
+  })
+  document.getElementById('no').addEventListener('click',()=>{
+    document.getElementById('confirmation').style.display="none";
+  })
+  
+  })
+})
+  
 }
+
+
+
+
 
 // EDITING THE POST
 function edit(){

@@ -417,11 +417,11 @@ font-size: clamp(1.75rem, 1.525rem + 1.125vw, 2.875rem);
     outline: none;
 }
 .contact_me_1 span{
-    color: lightgreen;
+    color: red;
     font-size: 18px;
     font-weight: 500;
     margin-top: 8px;
-    margin-left: 40px;
+    margin-left: 77px;
 }
 .contact_me_1 textarea::placeholder{
     position: relative;

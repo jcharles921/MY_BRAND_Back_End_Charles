@@ -91,7 +91,11 @@ function currentPost(){
                                           title:posts[i].title,
                                           text:posts[i].text,
                                           date:posts[i].date,
-                                          comments:"",
+                                          comments:{
+                                            name:"User2",
+                                            message:"Hello charles"
+                                          },
+                                          id:i,
                                           likes:""
                                         
                                         }
@@ -107,27 +111,6 @@ function currentPost(){
 
                                   })
   })
-
-  // posts.forEach(function(element,index) {
-  //   let pageArray=[]
-  //   let visitpage={
-  //     title:element.title,
-  //     text:element.text,
-  //     date:element.date,
-  //     comments:"",
-  //     likes:""
-    
-  //   }
-  //   pageArray.push(visitpage);
-  //   localStorage.setItem('pageArray',JSON.stringify(pageArray));
-  //   // window.location.href = "/pages/Blog/Articles/Article.html";
-
-
-  // });
-
-  
-
-
 
 
 }
