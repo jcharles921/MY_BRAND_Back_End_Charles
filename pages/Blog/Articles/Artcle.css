@@ -34,7 +34,7 @@ body{
     font-family: 'Poppins', sans-serif;
     background-color: var(--Dark-green);
     overflow-x: hidden;
-    color: #0B525B;
+    color: white;
     margin-top: -22px;
 }
 header{
@@ -162,27 +162,30 @@ font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.75rem);
     flex-direction: column;
     align-items:flex-end;
     justify-content: right;
+    color: white;
+    outline: none;
 }
 .leave_comment div{
-    display: grid;
+    
     width: 40%;
-    grid-template-columns: auto 20%;
-    grid-template-rows: auto auto;
+    display:flex;
+    flex-direction: column;
+
 }
 .leave_comment button{
     grid-column: 2;
     grid-row: 2;
     min-height:25px;
     position: relative;
-    bottom: 25px;
+    align-self: flex-end;
     border-radius: 50px;
     border: none;
-    left: 10px;
+    margin-top: 8px;
+    
     color: white;
     background-color: var(--light-orange);
     transition: var(--transition-delay-buttons);
-    width: 130%;
-    width: 90%;
+    width: 24%;
 }
 .leave_comment button:hover{
     background-color: white;
@@ -195,11 +198,34 @@ font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.75rem);
     min-height: 50px;
     color: white;
     border-radius: 10px;
-    border: 1px solid #FFFFFF;
+    border: 1px solid rgb(218, 212, 212);;
     padding-top: 8px;
     padding-left: 5px;
+    outline: none;
 }
 .leave_comment textarea::placeholder{
+    font-size: 1em;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+}
+.leave_comment span{
+    font-size: 12px;
+    display: flex;
+    align-self: center;
+    color: red;
+}
+.commentName{
+    background-color: var(--Dark-green);
+    border: 1px solid rgb(218, 212, 212);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    color: white;
+    outline: none;
+    width: 50%;
+
+}
+.commentName::placeholder{
     font-size: 1em;
     font-weight: 400;
     color: rgb(255, 255, 255);
@@ -212,7 +238,7 @@ font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.75rem);
     margin-bottom: 50px;
 }
 
-.the_comment textarea{
+.the_comment div{
     background-color: var(--Dark-green);
     border: 1px solid white;
     border-radius: 10px;
@@ -223,8 +249,8 @@ font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.75rem);
     overflow: hidden;
 }
 .the_comment p{
-    font-size: 0.9375rem;
-    font-size: clamp(0.9375rem, 0.8375rem + 0.5vw, 1.4375rem);
+    font-size: 0.8375rem;
+    font-size: clamp(0.8375rem, 0.7375rem + 0.5vw, 1.4375rem);
     font-weight: 600;
     margin-top: 0px;
 }
