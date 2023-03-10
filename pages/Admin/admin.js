@@ -21,111 +21,175 @@ hamburgerButton_close.addEventListener('click', function() {
   hamburgerView.style.position = 'none';
 });
 // Displaying all the posts
-posts=JSON.parse(localStorage.getItem('post')) || [];
-if (!Array.isArray(posts)) {
-  posts = [];
-}
-function display(){        
-            for( i=0;i <posts.length;i++){
-              out_post.innerHTML += ` <li class="post">
-                      <span >
-                          <div class="postimage">
-                          <img src=${posts[i].image}>
-                          </div>
-                          
-                          <div class="postdescription">
-                              <p class="post_title">${posts[i].title}</p>
-                              <p class="postdate">${posts[i].date}</p>
-                              <div class="Control_post">
-                                <img data-num=${i} src=${posts[i].edit} class='Edit' onclick="edit()" alt="">
-                                  <img src=${posts[i].delete} class='Delete' onclick="elimination()" data-num=${i} "alt="">
-                    
-                              </div>
-                          </div>
-                      </span>
-                    </li>`
-            }
+// posts=JSON.parse(localStorage.getItem('post')) || [];
+// if (!Array.isArray(posts)) {
+//   posts = [];
+// }
+let posts=[];
+const token= document.cookie.split('=')[1];
+function display(){ 
+  
+  fetch('http://localhost:5000/api/v1/CRUD',{
+  })
+  .then(response => response.json())
+  .then(response => {
+    for(i=0;i<response.data.length;i++){
+      posts.push(response.data[i])
+    }
+    ;
+  })
+  .then(()=>{
+    for( i=0;i <posts.length;i++){
+      out_post.innerHTML += ` <li class="post">
+              <span >
+                  <div class="postimage">
+                  <img src=${posts[i].imageUrl}>
+                  </div>
+                  
+                  <div class="postdescription">
+                      <p class="post_title">${posts[i].title}</p>
+                      <p class="postdate">${posts[i].createdAt}</p>
+                      <div class="Control_post">
+                        <img data-num=${posts[i]._id} src='/assets/images/Edit.svg' class='Edit' onclick="edit()" alt="">
+                          <img src="/assets/images/Delete.svg" class='Delete' onclick="elimination()" data-num=${i} "alt="">
+            
+                      </div>
+                  </div>
+              </span>
+            </li>`
+    }
+
+  })       
+        
           }
 
 //Posting by storing in Localstorage
 button.addEventListener('click', ()=>{
-  let posts=JSON.parse(localStorage.getItem('post')) || [];
+
   const article_image= document.getElementById('image-pic').files[0];
 let reader = new FileReader();
     reader.readAsDataURL(article_image);
  reader.onload=()=>{
-  let article= {
-    title: document.getElementById('title').value,
-    date: document.getElementById('date').value,
-    text:document.getElementById('text').value,
-    // title: article_title.value,
-    // date: article_date.value,
-    // text:article_text.value,
-    image: reader.result,
-    delete: "/assets/images/Delete.svg",
-    edit: "/assets/images/Edit.svg",
-    comments:[],
-    likes:""
-  }
-  posts.push(article);
-  console.log(posts);
-  localStorage.setItem('post',JSON.stringify(posts));
+
+  const data={content:article_text.value, title:article_title.value, imageUrl:reader.result, createdAt:article_date.value }
+  console.log(data);
+
+  fetch('http://localhost:5000/api/v1/CRUD',{
+
+
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+      "authorized": `${token}`
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response => response.json())
+  .then(response => {
+    console.log(response)
+    alert(response.message  );
+  })
+  // let article= {
+  //   title: document.getElementById('title').value,
+  //   date: document.getElementById('date').value,
+  //   text:document.getElementById('text').value,
+  //   // title: article_title.value,
+  //   // date: article_date.value,
+  //   // text:article_text.value,
+  //   image: reader.result,
+  //   delete: "/assets/images/Delete.svg",
+  //   edit: "/assets/images/Edit.svg",
+  //   comments:[],
+  //   likes:""
+  // }
+  // posts.push(article);
+  // console.log(posts);
+  // localStorage.setItem('post',JSON.stringify(posts));
  }
- location.reload()
+//  display();
 })
+
 
 //UPDATE POST 
 buttonUpdate.addEventListener('click', ()=>{
-  let posts=JSON.parse(localStorage.getItem('post')) || [];
   const article_image= document.getElementById('image-pic').files[0];
-let reader = new FileReader();
-    reader.readAsDataURL(article_image);
- reader.onload=()=>{
-  let article= {
-    title: document.getElementById('title').value,
-    date: document.getElementById('date').value,
-    text:document.getElementById('text').value,
-    image: reader.result,
-    // title: article_title.value,
-    // date: article_date.value,
-    // text:article_text.value,
-    // image: reader.result,
-    delete: "/assets/images/Delete.svg",
-    edit: "/assets/images/Edit.svg",
-  }
-  posts.push(article);
-  console.log(posts);
-  localStorage.setItem('post',JSON.stringify(posts));
- }
- location.reload();
-  // display();
+  let reader = new FileReader();
+      reader.readAsDataURL(article_image);
+    reader.onload=()=>{
+      const data={content:article_text.value, title:article_title.value, imageUrl:reader.result  }
+      
+      let theId= localStorage.getItem("currentID")
+      console.log(theId)
+      console.log(data);
+      fetch(`http://localhost:5000/api/v1/CRUD/${theId}`,{
+        method: 'PATCH',
+        headers: {
+          "Content-Type": "application/json",
+          "authorized": `${token}`
+        },
+
+        
+        body: JSON.stringify(data),
+        
+      })
+      .then((response)=>{
+        response.json()
+        .then((data)=>{
+          console.log(data)
+      })
+
+
+      })
+    }
+    location.reload();  
+  
 })
 // DELETING POST
-const Delete= document.getElementsByClassName('Delete');
+;
 
 function elimination(){
-  var arrDelete= Array.from(Delete);
 
+  let theId= localStorage.getItem("currentID");
+  fetch(
+    `http://localhost:5000/api/v1/CRUD/${theId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "authorized": `${token}`
+      },
 
-arrDelete.forEach((e) => {
-  e.addEventListener('click',()=>{
-    console.log("hello")
-  document.getElementById('confirmation').style.display="flex";
-  ;
-  ;
-  document.getElementById('yes').addEventListener('click', ()=>{
-    let myid=e.dataset.num;
-    console.log(myid)
-    posts.splice(myid, 1);
-    localStorage.setItem("post", JSON.stringify(posts));
-    location.reload();
+    }
+  )
+  .then((response)=>{
+    response.json()
+    .then((data)=>{
+      alert(data);
+      console.log(data)
   })
-  document.getElementById('no').addEventListener('click',()=>{
-    document.getElementById('confirmation').style.display="none";
   })
   
-  })
-})
+
+
+// arrDelete.forEach((e) => {
+//   e.addEventListener('click',()=>{
+//     console.log("hello")
+//   document.getElementById('confirmation').style.display="flex";
+//   ;
+//   ;
+//   document.getElementById('yes').addEventListener('click', ()=>{
+//     let myid= e.dataset.num;
+//     console.log(myid)
+//     posts.splice(myid, 1);
+//     localStorage.setItem("post", JSON.stringify(posts));
+//     // location.reload();
+//   })
+//   document.getElementById('no').addEventListener('click',()=>{
+//     document.getElementById('confirmation').style.display="none";
+//   })
+  
+//   })
+// })
   
 }
 
@@ -135,33 +199,59 @@ arrDelete.forEach((e) => {
 
 // EDITING THE POST
 function edit(){
+  buttonUpdate.style.display = 'block';
+  button.style.display="none";
   const Edit = document.getElementsByClassName('Edit');
   let arrEdit = Array.from(Edit)
-  arrEdit.forEach((e) => {
-    e.addEventListener('click',()=>{
-      // console.log("HIGH")
-      buttonUpdate.style.display = 'block';
-      button.style.display="none";
-      let myid=e.dataset.num;
-      console.log(posts[myid])
-      // posts=JSON.parse(localStorage.getItem('post'));
-      for(let i=0;i<=posts.length;i++){
-        
-          if(myid==i){
-            article_text.value=posts[i].text;
-            article_date.value=posts[i].date;
-            article_title.value=posts[i].title;
-            currentPostImage.style.display="block"
-            currentPostImage.src=posts[i].image;
-            posts.splice(myid, 1);
-            localStorage.setItem("post", JSON.stringify(posts));
-            display();
-          }
-      }
-    })
-    
-  });
+  const allIds=[]
 
+  arrEdit.forEach((n) => {
+    allIds.push(n.dataset.num)
+    
+  })
+
+  arrEdit.forEach((n)=>{
+    n.addEventListener('click',()=>{
+      let myid=n.dataset.num;
+      localStorage.setItem("currentID",(myid));
+    allIds.forEach((id)=>{
+      if(myid ==id){
+         fetch(`http://localhost:5000/api/v1/CRUD/${myid}`,{
+    })
+    .then(response => response.json())
+    .then(response => {
+      console.log(response)
+      document.getElementById('title').value=response.data.title;
+      document.getElementById('text').value=response.data.content;
+      document.getElementById('currentPostImage').src=response.data.imageUrl;
+
+      
+    })
+
+      }
+
+
+    })
+   
+ 
+  
+  })
+
+  })
+    
+  
+
+
+   //  console.log(myid)
+  //  console.log(`http://localhost:5000/api/v1/CRUD/${myid}`)
+  
+
+    // fetch(`http://localhost:5000/api/v1/CRUD/${myid}`,{
+    // })
+    // .then(response => response.json())
+    // .then(response => {
+    //   console.log(response)
+    // })
 
 
 

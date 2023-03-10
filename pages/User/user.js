@@ -35,7 +35,7 @@ window.onload=()=>{
     // else{
     //     picture.src= storedPic;
     // }
-    welcome.innerHTML=userinfo.name;
+    welcome.innerHTML=userinfo.data.name;
     for(i=0;i<users.length;i++){
       out_list.innerHTML=`<div> <li>${users[i].name.split(' ')[0]} <img src="/assets/images/Icon_profile.svg" alt=""></li>
       </div> `

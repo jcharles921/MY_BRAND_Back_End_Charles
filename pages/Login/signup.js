@@ -44,18 +44,42 @@ let targetUser= ()=>{
 
 //action to be done after validation (signup)
 function submit(){
-   
-  console.log(" localstorage")
-  let user = {
-    name : userName.value,
-    email : email.value,
-    password :pass.value
-  };
+  const req={ email:email.value, password: pass.value, name: userName.value}
+  fetch( 'http://localhost:5000/api/v1/Signup',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+      ,}
+    ,
+    body: JSON.stringify( req),
 
-  users.push(user);
-  const stringUsers = JSON.stringify(users);
-  localStorage.setItem('users', stringUsers);
-  window.location.href = '/pages/Login/Login.html';
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    if(data.status== 201){
+      alert("USER SUCCESSFULY CREATED")
+      window.location.href = '/pages/Login/Login.html';
+    }
+      else if(data.status ==403){
+        out.innerHTML="Email already exist"
+      }
+      else if (data.status==500){
+        out.innerHTML="INTERNAL ERROR OR BAD CONNECTION"
+      }
+  })
+   
+  // console.log(" localstorage")
+  // let user = {
+  //   name : userName.value,
+  //   email : email.value,
+  //   password :pass.value
+  // };
+
+  // users.push(user);
+  // const stringUsers = JSON.stringify(users);
+  // localStorage.setItem('users', stringUsers);
+  // window.location.href = '/pages/Login/Login.html';
 }
 
 //  valitation form
