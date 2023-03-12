@@ -23,33 +23,89 @@ hamburgerButton_close.addEventListener('click', function() {
 
 //Getting elements from the local Storage
 
-users = JSON.parse(localStorage.getItem('users')) || [];
+// users = JSON.parse(localStorage.getItem('users')) || [];
+
 //action to be done after validation of a form
 
+
 function submit(){
-  console.log("its submitted")
-  const targetUser = users.find(user => user.email == email.value);
-  if( email.value === Supuser && pass.value === Suppass){
-    window.location.href = "/pages/Admin/admin.html";
+  const req={ email:email.value, password: pass.value}
+  // console.log(req)
+fetch('http://localhost:5000/api/v1/Login',{
+
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Cookie':'token'
+    
+  },
+  body: JSON.stringify(req),
+  
+  
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.token);
+    let cookie= data.token;
     
 
-  }
 
- else if(targetUser && targetUser.password == pass.value) {
-    localStorage.setItem('currentUser', JSON.stringify(targetUser))
+    
+    // document.cookie("session", cookie,{
+    //   httpOnly: true,
+    //   maxAge: 1000 * 60 * 60 * 24 * 7,
+    // })
+    // console.log(data.status)
+    if(data.status== 200){
+      // window.location.href = "/pages/User/user.html";
+      localStorage.setItem('currentUser', JSON.stringify(data))
+      if (data.data.isAdmin==true){
+        document.cookie = `token=${cookie}; max-age=3600; path=/;SameSite=Lax`;
+        window.location.href = "/pages/Admin/admin.html";
+      }
+      else{
+        document.cookie = `token=${cookie}; max-age=3600; path=/;SameSite=Lax`;
+        window.location.href = "/pages/User/user.html";
+      }
 
-    window.location.href = "/pages/User/user.html";
-    session();
+    }
+    else if(data.status ==401){
+      out.innerHTML="Not registered, go to signup?"
+      out_pass.innerHTML="Invalid Credential !!"
+    }
+    
+  })
+  .catch((error) => {
+    alert(error);
+  });
+
+
+
+//   console.log("its submitted")
+//   const targetUser = users.find(user => user.email == email.value);
+//   if( email.value === Supuser && pass.value === Suppass){
+//     window.location.href = "/pages/Admin/admin.html";
+    
+
+//   }
+
+//  else if(targetUser && targetUser.password == pass.value) {
+//     localStorage.setItem('currentUser', JSON.stringify(targetUser))
+
+//     window.location.href = "/pages/User/user.html";
+//     session();
     
     
-  } else if(targetUser && targetUser.password != pass.value) {
-    out_pass.innerHTML="Wrong Password !";
-    // window.location.href = '../user/user.html';
-  } else {
-    // user doesn't exist
-    out_pass.innerHTML="Not registered, go to signup?";
+//   } else if(targetUser && targetUser.password != pass.value) {
+//     out_pass.innerHTML="Wrong Password !";
+//     // window.location.href = '../user/user.html';
+//   } else {
+//     // user doesn't exist
+//     out_pass.innerHTML="Not registered, go to signup?";
     
-  }
+//   }
 }
 
 //  valitation form

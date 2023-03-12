@@ -16,42 +16,57 @@ hamburgerButton_close.addEventListener('click', function() {
   hamburgerView.style.position = 'none';
 });
 
-posts=JSON.parse(localStorage.getItem('post')) || [];
+// posts=JSON.parse(localStorage.getItem('post')) || [];
+
 
 function display(){
-  // console.log(posts[0].image)
-            
-          if (posts !==[]){
-            for( i=0;i <posts.length;i++){
-              out_post.innerHTML += `<li class="post">
-              <span>
-                  <a data-num=${i} class="blogpost" >
-                  <div class="postimage">
-                  <img  src=${posts[i].image} alt="">
+  // console.log(posts[0].image)s
+  fetch('http://localhost:5000/api/v1/CRUD',{
+  })
+  .then(response => response.json())
+  .then(response => {
+    for(i=0;i<response.data.length;i++){
+      posts.push(response.data[i])
+    }
+    ;
+
+
+  })
+  
+  .then(()=>{
+    console.log(posts)
+    for( i=0;i <posts.length;i++){
+      out_post.innerHTML += `<li class="post">
+      <span>
+          <a data-num=${i} class="blogpost" >
+          <div class="postimage">
+          <img  src=${posts[i].imageUrl} alt="">
+          </div>
+          
+          
+          <div class="postdescription">
+          <p class="post_title">${posts[i].title}</p> </a>
+              <p class="postdate">${posts[i].createdAt}</p>
+              <div class="likes_comments">
+                  <div>
+                      <img src="/assets/images/chat.svg" alt="">
+                      <img src="/assets/images/likes.svg" alt="">
                   </div>
-                 
-                  
-                  <div class="postdescription">
-                  <p class="post_title">${posts[i].title}</p> </a>
-                      <p class="postdate">${posts[i].date}</p>
-                      <div class="likes_comments">
-                          <div>
-                              <img src="/assets/images/chat.svg" alt="">
-                              <img src="/assets/images/likes.svg" alt="">
-                          </div>
-                          <div>
-                              <p style="right: 45px;">3</p>
-                              <p style="right: 15px;">4</p>     
-                          </div>
-              
-                      </div>
+                  <div>
+                      <p style="right: 45px;">3</p>
+                      <p style="right: 15px;">4</p>     
                   </div>
-              </span>
-              </li>`
-            }
-          }
+      
+              </div>
+          </div>
+      </span>
+      </li>`
+    }
+  })
+    .catch(err => console.log(err))
+  }
           currentPost();
-}
+
 
 {/* <li class="post">
               <a onclick="currentPost()" >
@@ -82,34 +97,34 @@ function currentPost(){
   let arrCurrent=Array.from(current);
   arrCurrent.forEach((e)=>{
     e.addEventListener('click',()=>{
-                                          let pageArray=[]
-                                    let myid=e.dataset.num;
-                                    // console.log(posts[myid])
-                                     for(i=0;i<posts.length;i++){
-                                      if(myid==i){
-                                        let visitpage={
-                                          title:posts[i].title,
-                                          text:posts[i].text,
-                                          date:posts[i].date,
-                                          comments:{
-                                            name:"User2",
-                                            message:"Hello charles"
-                                          },
-                                          id:i,
-                                          likes:""
-                                        
-                                        }
-                                        pageArray.push(visitpage);
-                                      }
+              let pageArray=[]
+        let myid=e.dataset.num;
+        // console.log(posts[myid])
+          for(i=0;i<posts.length;i++){
+          if(myid==i){
+            let visitpage={
+              title:posts[i].title,
+              text:posts[i].text,
+              date:posts[i].date,
+              comments:{
+                name:"User2",
+                message:"Hello charles"
+              },
+              id:i,
+              likes:""
+            
+            }
+            pageArray.push(visitpage);
+          }
 
 
-                                     }
-                                     console.log(pageArray);
-                                        localStorage.setItem('pageArray',JSON.stringify(pageArray));
-                                        window.location.href = "/pages/Blog/Articles/Article.html";
+          }
+          console.log(pageArray);
+            localStorage.setItem('pageArray',JSON.stringify(pageArray));
+            window.location.href = "/pages/Blog/Articles/Article.html";
 
 
-                                  })
+    })
   })
 
 
@@ -117,8 +132,8 @@ function currentPost(){
 
 //href="/pages/Blog/Articles/Article.html"
 window.onload=()=>{
-  
-  posts=JSON.parse(localStorage.getItem('post')) || [];
+  posts=[]
+  // posts=JSON.parse(localStorage.getItem('post')) || [];
   display();
  
 

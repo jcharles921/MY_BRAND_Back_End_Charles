@@ -219,7 +219,7 @@ margin-bottom: 20px;
     border-radius: 10px;
     margin-bottom: 5px;
     width:91%;
-    height: calc(100% / 3.1);
+    height: 130px;
     min-height: 105px;
     /* overflow: hidden; */
     display: flex;
@@ -339,7 +339,7 @@ font-size: 1.3125em;
 
 }
 #currentPostImage{
-    display: none;
+    
     margin-top: 50px;
     width: 300px;
 }
