@@ -20,13 +20,11 @@ hamburgerButton_close.addEventListener('click', function() {
   hamburgerView.style.visibility = 'none';
   hamburgerView.style.position = 'none';
 });
-// Displaying all the posts
-// posts=JSON.parse(localStorage.getItem('post')) || [];
-// if (!Array.isArray(posts)) {
-//   posts = [];
-// }
+
 let posts=[];
 const token= document.cookie.split('=')[1];
+
+//DISPLAY Blog Article
 function display(){ 
   
   fetch('http://localhost:5000/api/v1/CRUD',{
@@ -51,7 +49,7 @@ function display(){
                       <p class="postdate">${posts[i].createdAt}</p>
                       <div class="Control_post">
                         <img data-num=${posts[i]._id} src='/assets/images/Edit.svg' class='Edit' onclick="edit()" alt="">
-                          <img src="/assets/images/Delete.svg" class='Delete' onclick="elimination()" data-num=${i} "alt="">
+                          <img src="/assets/images/Delete.svg" class='Delete' onclick="elimination()" data-num=${posts[i]._id} "alt="">
             
                       </div>
                   </div>
@@ -63,8 +61,11 @@ function display(){
         
           }
 
-//Posting by storing in Localstorage
+//POSTING A BLOG POST
 button.addEventListener('click', ()=>{
+  const token= document.cookie.split('=')[1];
+  console.log(token)
+
 
   const article_image= document.getElementById('image-pic').files[0];
 let reader = new FileReader();
@@ -88,34 +89,21 @@ let reader = new FileReader();
   .then(response => {
     console.log(response)
     alert(response.message  );
+    location.reload();
   })
-  // let article= {
-  //   title: document.getElementById('title').value,
-  //   date: document.getElementById('date').value,
-  //   text:document.getElementById('text').value,
-  //   // title: article_title.value,
-  //   // date: article_date.value,
-  //   // text:article_text.value,
-  //   image: reader.result,
-  //   delete: "/assets/images/Delete.svg",
-  //   edit: "/assets/images/Edit.svg",
-  //   comments:[],
-  //   likes:""
-  // }
-  // posts.push(article);
-  // console.log(posts);
-  // localStorage.setItem('post',JSON.stringify(posts));
+
  }
-//  display();
+  
 })
 
 
-//UPDATE POST 
+//UPDATE POST
 buttonUpdate.addEventListener('click', ()=>{
   const article_image= document.getElementById('image-pic').files[0];
   let reader = new FileReader();
       reader.readAsDataURL(article_image);
     reader.onload=()=>{
+      document.getElementById('currentPostImage').src=reader.result;
       const data={content:article_text.value, title:article_title.value, imageUrl:reader.result  }
       
       let theId= localStorage.getItem("currentID")
@@ -136,62 +124,55 @@ buttonUpdate.addEventListener('click', ()=>{
         response.json()
         .then((data)=>{
           console.log(data)
+          location.reload();  
       })
 
 
       })
     }
-    location.reload();  
+    
   
 })
-// DELETING POST
+// DELETING BLOG POST
 ;
 
 function elimination(){
+const terminate = document.getElementsByClassName('Delete');
+let arrDelete = Array.from(terminate)
+let allIds=[];
+arrDelete.forEach((n) => {
+ 
+  n.addEventListener('click',()=>{
+      document.getElementById('confirmation').style.display="flex";
+      document.getElementById('yes').addEventListener('click', ()=>{
+        let myid= n.dataset.num;
+        console.log(myid)
+        fetch(`http://localhost:5000/api/v1/CRUD/${myid}`,{
+          method: 'DELETE',
+          headers: {
+            "Content-Type": "application/json",
+            "authorized": `${token}`
+          },
+    
+        })
+        .then((response)=>{
+          response.json()
+          .then((data)=>{
+            console.log(data)
+            alert(data.message)
+            location.reload();
+          })
+        })
+      })
+      document.getElementById('no').addEventListener('click',()=>{
+        document.getElementById('confirmation').style.display="none";
+      })
+    
 
-  let theId= localStorage.getItem("currentID");
-  fetch(
-    `http://localhost:5000/api/v1/CRUD/${theId}`,
-    {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "authorized": `${token}`
-      },
-
-    }
-  )
-  .then((response)=>{
-    response.json()
-    .then((data)=>{
-      alert(data);
-      console.log(data)
   })
-  })
-  
-
-
-// arrDelete.forEach((e) => {
-//   e.addEventListener('click',()=>{
-//     console.log("hello")
-//   document.getElementById('confirmation').style.display="flex";
-//   ;
-//   ;
-//   document.getElementById('yes').addEventListener('click', ()=>{
-//     let myid= e.dataset.num;
-//     console.log(myid)
-//     posts.splice(myid, 1);
-//     localStorage.setItem("post", JSON.stringify(posts));
-//     // location.reload();
-//   })
-//   document.getElementById('no').addEventListener('click',()=>{
-//     document.getElementById('confirmation').style.display="none";
-//   })
-  
-//   })
-// })
-  
+});
 }
+
 
 
 
@@ -224,6 +205,8 @@ function edit(){
       document.getElementById('title').value=response.data.title;
       document.getElementById('text').value=response.data.content;
       document.getElementById('currentPostImage').src=response.data.imageUrl;
+      window.location.href = "/pages/Admin/admin.html#text";
+    
 
       
     })
@@ -239,27 +222,35 @@ function edit(){
 
   })
     
-  
-
-
-   //  console.log(myid)
-  //  console.log(`http://localhost:5000/api/v1/CRUD/${myid}`)
-  
-
-    // fetch(`http://localhost:5000/api/v1/CRUD/${myid}`,{
-    // })
-    // .then(response => response.json())
-    // .then(response => {
-    //   console.log(response)
-    // })
-
-
-
 }
 //display all queries
 const queries_out= document.getElementById("queries");
 const queries=()=>{
-  let allQueries=JSON.parse(localStorage.getItem("allQueries")) || [];
+  let allQueries=[];
+  // let allQueries=JSON.parse(localStorage.getItem("allQueries")) || [];
+  fetch('http://localhost:5000/api/v1/queries',{
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "authorized": `${token}`
+    },
+
+  })
+  .then(response => response.json())
+  .then(response => {
+    console.log(response)
+    // for(i=0;i<response.data.length;i++){
+    //   posts.push(response.data[i])
+    // }
+    // for(i=0;i<response.data.length;i++){
+    //   allQueries.push(response.data[i])
+
+    // }
+
+    // let allQueries=response.data;
+   
+  })
+  // console.log(allQueries)
   for(i=0;i<allQueries.length;i++){
     let date= allQueries[i].time;
     let day_hours= date.split("T")
@@ -270,7 +261,7 @@ const queries=()=>{
     }
     else{
       queries_out.innerHTML+=`<span>
-                                  <h3>${allQueries[i].ton_nom}</h3>
+                                  <h3>${allQueries[i].name}</h3>
                                   <p>${day_hours}</p>
                                   <textarea rows="4" cols="50">${allQueries[i].message}</textarea>
                               </span>`;

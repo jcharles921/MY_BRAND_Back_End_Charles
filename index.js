@@ -21,12 +21,28 @@ function submit(){
     message: message.value,
     time: currentTime
   }
-  allQueries.push(theQuery);
-  console.log(theQuery);
-  localStorage.setItem("allQueries", JSON.stringify(allQueries));
-  email.value="";
+  fetch('http://localhost:5000/api/v1/queries',{
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(theQuery)
+  })
+  .then((response)=>{
+    response.json()
+    .then((data)=>{
+      console.log(data)
+      alert(data.message)
+      email.value="";
   ton_nom.value="";
   message.value="";
+    })
+  })
+
+  // allQueries.push(theQuery);
+  // console.log(theQuery);
+  // localStorage.setItem("allQueries", JSON.stringify(allQueries));
+  
 }
 
 //  valitation form
