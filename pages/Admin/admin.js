@@ -224,9 +224,10 @@ function edit(){
     
 }
 //display all queries
+let allQueries=[];
 const queries_out= document.getElementById("queries");
 const queries=()=>{
-  let allQueries=[];
+
   // let allQueries=JSON.parse(localStorage.getItem("allQueries")) || [];
   fetch('http://localhost:5000/api/v1/queries',{
     method: 'GET',
@@ -239,21 +240,40 @@ const queries=()=>{
   .then(response => response.json())
   .then(response => {
     console.log(response)
+    // queries();
     // for(i=0;i<response.data.length;i++){
     //   posts.push(response.data[i])
     // }
-    // for(i=0;i<response.data.length;i++){
-    //   allQueries.push(response.data[i])
+    for(i=0;i<response.data.length;i++){
+      allQueries.push(response.data[i])
+      console.log('psuhed this'+response.data[i])
 
-    // }
+    }
+    setTimeout(()=>{
+      displayQueries();
+    },2000)
 
     // let allQueries=response.data;
    
   })
-  // console.log(allQueries)
+ 
+ 
+}
+function displayQueries(){
+  console.log(allQueries[0])
   for(i=0;i<allQueries.length;i++){
-    let date= allQueries[i].time;
-    let day_hours= date.split("T")
+    let date= allQueries[i].createdAt;
+    function formatDate(dateTimeString) {
+      const dateTime = new Date(dateTimeString);
+      const year = dateTime.getFullYear();
+      const month = ("0" + (dateTime.getMonth() + 1)).slice(-2);
+      const date = ("0" + dateTime.getDate()).slice(-2);
+      const hours = ("0" + dateTime.getHours()).slice(-2);
+      const minutes = ("0" + dateTime.getMinutes()).slice(-2);
+      return `${year}-${month}-${date}, ${hours}:${minutes}`;
+    }
+    date=formatDate(date);
+    
 
     if(allQueries==[]){
       queries_out.innerHTML+=`<h2 style="color:white;">No message for you !!</h2>`;
@@ -262,14 +282,12 @@ const queries=()=>{
     else{
       queries_out.innerHTML+=`<span>
                                   <h3>${allQueries[i].name}</h3>
-                                  <p>${day_hours}</p>
+                                  <p>${date}</p>
                                   <textarea rows="4" cols="50">${allQueries[i].message}</textarea>
                               </span>`;
     }
   }
-
 }
-
 //Displaying post in the posts section
 window.onload=()=>{
   article_text.value="";
