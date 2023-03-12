@@ -41,7 +41,7 @@ function display(){
       const date = ("0" + dateTime.getDate()).slice(-2);
       const hours = ("0" + dateTime.getHours()).slice(-2);
       const minutes = ("0" + dateTime.getMinutes()).slice(-2);
-      return `${year}-${month}-${date}, ${hours}:${minutes}`;
+      return `${year}-${month}-${date}`;
     }
 
     console.log(posts)
@@ -141,9 +141,50 @@ function currentPost(){
 
 
 }
+//LOGOUT
+document.getElementById('log_B').addEventListener('click', ()=>{
+  window.location.href = "/pages/Login/Login.html";
+  let emptier='';
+  localStorage.setItem('currentUser', JSON.stringify(emptier))
+})
+//PROFILE
+// function profile(e){
+//   console.log("profile");
+  
+ 
+//   // e.addEventListener('click',()=>{
+//   //   if(currentUser.data.isAdmin== true){
+//   //     window.location.href="/pages/Admin/admin.html";
+//   //   }
+//   //   else{
+//   //     window.location.href="/pages/User/user.html"
+  
+//   //   }
+ 
+// }
+document.getElementById('profile').addEventListener('click',()=>{
+  var currentUser= JSON.parse(localStorage.getItem('currentUser'))
+      if(currentUser.data.isAdmin== true){
+      window.location.href="/pages/Admin/admin.html";
+    }
+    else{
+      window.location.href="/pages/User/user.html"
+  
+    }
+  })
 
+// }))
 //href="/pages/Blog/Articles/Article.html"
 window.onload=()=>{
+  var currentUser= JSON.parse(localStorage.getItem('currentUser'))
+  // console.log(currentUser)
+  if(currentUser){
+    document.getElementById('log_B').innerHTML="Logout";
+    
+  }
+  else{
+    document.getElementById("profile").style.display="none"
+  }
   posts=[]
   // posts=JSON.parse(localStorage.getItem('post')) || [];
   display();

@@ -21,13 +21,52 @@ hamburgerButton_close.addEventListener('click', function() {
 
 //session user information 
 let userinfo= JSON.parse(localStorage.getItem('currentUser'));
-let users=JSON.parse(localStorage.getItem('users'));
+// let users=JSON.parse(localStorage.getItem('users'));
 
 // const storedPic= new Image();
 // storedPic.src=userinfo.image;
 
 
 // console.log(userinfo)
+
+
+function displayUsers(){
+  let token=document.cookie.split('=')[1];
+  console.log(token)
+  fetch('http://localhost:5000/api/v1/Signup',{
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': `${token}`
+
+    }
+
+  })
+  .then(response => response.json())
+  .then(response => {
+    console.log(response)
+    // localStorage.setItem('users', JSON.stringify(response.data));
+    // users=JSON.parse(localStorage.getItem('users'));
+    // console.log(users)
+    response.data.forEach(element => {
+      out_list.innerHTML+=`<div> <li>${element.username.split(' ')[0]} <img src="/assets/images/Icon_profile.svg" alt=""></li>
+      </div> `
+    });
+  }
+  )
+  
+
+  
+
+
+
+
+}
+
+
+
+
+
 window.onload=()=>{
     // if(userinfo.image=== null){
     //     picture.src="/assets/images/Icon_profile.svg"
@@ -36,13 +75,14 @@ window.onload=()=>{
     //     picture.src= storedPic;
     // }
     welcome.innerHTML=userinfo.data.name;
-    for(i=0;i<users.length;i++){
-      out_list.innerHTML=`<div> <li>${users[i].name.split(' ')[0]} <img src="/assets/images/Icon_profile.svg" alt=""></li>
-      </div> `
+    displayUsers();
+    // for(i=0;i<users.length;i++){
+    //   out_list.innerHTML=`<div> <li>${users[i].name.split(' ')[0]} <img src="/assets/images/Icon_profile.svg" alt=""></li>
+    //   </div> `
 
-    }
-    users.forEach(element => {
-      console.log(element.name)
+    // }
+    // users.forEach(element => {
+    //   console.log(element.name)
       
-    });
+    // });
 }

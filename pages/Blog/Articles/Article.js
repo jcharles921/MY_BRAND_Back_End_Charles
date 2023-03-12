@@ -20,6 +20,11 @@ let arrarticle=[];
 
 pageArray=JSON.parse(localStorage.getItem('pageArray')) || [];
 window.onload=()=>{
+  let currentUser=localStorage.getItem('currentUser');
+    if(currentUser){
+    document.getElementById('log_B').innerHTML="Logout";
+    
+  }
 if(pageArray!==[]){
   out_date.innerHTML+=`${pageArray[0].date}`;
   out_text.innerHTML+=`${pageArray[0].text}`;
@@ -35,9 +40,9 @@ if(pageArray!==[]){
 
   
 }
-display();
-  pageArray=[]
-  localStorage.setItem('pageArray', JSON.stringify(pageArray));
+// display();
+  // pageArray=[]
+  // localStorage.setItem('pageArray', JSON.stringify(pageArray));
 }
 // DISPLAY FROM LOCALSTORAGE
 const out_thecomment=document.getElementById('out_thecomment')
@@ -121,3 +126,11 @@ document.getElementById('send').addEventListener('click', function(event) {
   }
 
 });
+
+// window.onload(()=>{
+//   if(currentUser){
+//     document.getElementById('log_B').innerHTML="Logout";
+    
+//   }
+
+// })

@@ -301,6 +301,23 @@ function displayQueries(){
 }
 //Displaying post in the posts section
 window.onload=()=>{
+  var sessionData = JSON.parse(localStorage.getItem('currentUser'))
+  let tokenvalid = document.cookie;
+  if(sessionData && tokenvalid){
+    console.log('welcome')
+    console.log(sessionData.data.isAdmin)
+    if(sessionData.data.isAdmin !== true){
+      alert("your are not supposed to be here")
+      window.location.href = "/pages/Login/Login.html"
+    }
+    
+  }
+  else{
+    console.log("you are not welcomed")
+    alert('Sign in first');
+    window.location.href = "/pages/Login/Login.html"
+
+  }
   article_text.value="";
   article_date.value="";
   article_title.value="";
