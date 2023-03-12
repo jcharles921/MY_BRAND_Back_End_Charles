@@ -44,7 +44,7 @@ let targetUser= ()=>{
 
 //action to be done after validation (signup)
 function submit(){
-  const req={ email:email.value, password: pass.value, name: userName.value}
+  const req={ email:email.value, password: pass.value, username: userName.value}
   fetch( 'http://localhost:5000/api/v1/Signup',{
     method: 'POST',
     headers: {

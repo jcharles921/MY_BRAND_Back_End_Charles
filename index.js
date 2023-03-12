@@ -17,9 +17,9 @@ function submit(){
   // hours = currentTime.getHours();
   let theQuery={
     email: email.value,
-    ton_nom: ton_nom.value,
+    name: ton_nom.value,
     message: message.value,
-    time: currentTime
+    // time: currentTime
   }
   fetch('http://localhost:5000/api/v1/queries',{
     method: 'POST',
