@@ -26,6 +26,15 @@ const token= document.cookie.split('=')[1];
 
 //DISPLAY Blog Article
 function display(){ 
+  function formatDate(dateTimeString) {
+    const dateTime = new Date(dateTimeString);
+    const year = dateTime.getFullYear();
+    const month = ("0" + (dateTime.getMonth() + 1)).slice(-2);
+    const date = ("0" + dateTime.getDate()).slice(-2);
+    const hours = ("0" + dateTime.getHours()).slice(-2);
+    const minutes = ("0" + dateTime.getMinutes()).slice(-2);
+    return `${year}-${month}-${date}, ${hours}:${minutes}`;
+  }
   
   fetch('http://localhost:5000/api/v1/CRUD',{
   })
@@ -38,6 +47,8 @@ function display(){
   })
   .then(()=>{
     for( i=0;i <posts.length;i++){
+      posts[i].createdAt= formatDate(posts[i].createdAt);
+      
       out_post.innerHTML += ` <li class="post">
               <span >
                   <div class="postimage">

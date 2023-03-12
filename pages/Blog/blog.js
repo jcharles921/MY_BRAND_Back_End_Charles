@@ -34,11 +34,22 @@ function display(){
   })
   
   .then(()=>{
+    function formatDate(dateTimeString) {
+      const dateTime = new Date(dateTimeString);
+      const year = dateTime.getFullYear();
+      const month = ("0" + (dateTime.getMonth() + 1)).slice(-2);
+      const date = ("0" + dateTime.getDate()).slice(-2);
+      const hours = ("0" + dateTime.getHours()).slice(-2);
+      const minutes = ("0" + dateTime.getMinutes()).slice(-2);
+      return `${year}-${month}-${date}, ${hours}:${minutes}`;
+    }
+
     console.log(posts)
     for( i=0;i <posts.length;i++){
+      posts[i].createdAt=formatDate(posts[i].createdAt);
       out_post.innerHTML += `<li class="post">
       <span>
-          <a data-num=${i} class="blogpost" >
+          <a onclick="currentPost()" data-num=${i} class="blogpost" >
           <div class="postimage">
           <img  src=${posts[i].imageUrl} alt="">
           </div>
@@ -99,13 +110,14 @@ function currentPost(){
     e.addEventListener('click',()=>{
               let pageArray=[]
         let myid=e.dataset.num;
+        console.log(myid)
         // console.log(posts[myid])
           for(i=0;i<posts.length;i++){
           if(myid==i){
             let visitpage={
               title:posts[i].title,
-              text:posts[i].text,
-              date:posts[i].date,
+              text:posts[i].content,
+              date:posts[i].createdAt,
               comments:{
                 name:"User2",
                 message:"Hello charles"
