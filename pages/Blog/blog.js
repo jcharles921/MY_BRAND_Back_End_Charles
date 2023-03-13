@@ -64,8 +64,8 @@ function display(){
                       <img src="/assets/images/likes.svg" alt="">
                   </div>
                   <div>
-                      <p style="right: 45px;">3</p>
-                      <p style="right: 15px;">4</p>     
+                      <p style="right: 45px;">${posts[i].commentSection.length}</p>
+                      <p style="right: 15px;">0</p>     
                   </div>
       
               </div>
@@ -122,7 +122,7 @@ function currentPost(){
                 name:"User2",
                 message:"Hello charles"
               },
-              id:i,
+              id:posts[i]._id,
               likes:""
             
             }

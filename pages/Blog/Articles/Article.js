@@ -16,16 +16,23 @@ hamburgerButton_close.addEventListener('click', function() {
   hamburgerView.style.visibility = 'none';
   hamburgerView.style.position = 'none';
 });
-let arrarticle=[];
 
-pageArray=JSON.parse(localStorage.getItem('pageArray')) || [];
+
+
+
+
+
+let arrarticle=[];
+let commentArr=[]
+
+var pageArray=JSON.parse(localStorage.getItem('pageArray')) || [];
 window.onload=()=>{
   let currentUser=localStorage.getItem('currentUser');
     if(currentUser){
     document.getElementById('log_B').innerHTML="Logout";
-    
-  }
-if(pageArray!==[]){
+
+    // displaycomment();
+    if(pageArray!==[]){
   out_date.innerHTML+=`${pageArray[0].date}`;
   out_text.innerHTML+=`${pageArray[0].text}`;
   out_title.innerHTML+=`${pageArray[0].title}`;
@@ -40,6 +47,9 @@ if(pageArray!==[]){
 
   
 }
+display();
+  }
+
 // display();
   // pageArray=[]
   // localStorage.setItem('pageArray', JSON.stringify(pageArray));
@@ -47,24 +57,53 @@ if(pageArray!==[]){
 // DISPLAY FROM LOCALSTORAGE
 const out_thecomment=document.getElementById('out_thecomment')
 function display(){
-  let temp = arrarticle[0].id
-  console.log(temp)
+  let myId= arrarticle[0].id
+  fetch(`http://127.0.0.1:5000/api/v1/CRUD/${myId}`,{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'},
   
-    for(i=0;i<posts[temp].comments.length;i++){
-      out_thecomment.innerHTML+=` 
-      <div class="the_comment" >
-      <p>${posts[temp].comments[i].name}</p>
-      <div >${posts[temp].comments[i].message}
-      </div>
-    </div>`
-    }
+    })
+    .then(response => response.json())
+    .then((response) => {
+        console.log(response.data.commentSection[0])
+        for(i=0;i< response.data.commentSection.length;i++){
+          commentArr.push(response.data.commentSection[i])
+          // console.log(response.data[i])
+        }
 
+        // data.data.comments.forEach(element => {
+        //   out_thecomment.innerHTML+=`<div class="comment">
+        //   <div class="commenter">
+        //     <img src="/assets/images/Icon_profile.svg" alt="">
+        //     <p>${element.name}</p>
+        //   </div>
+        //   <div class="comment_text">
+        //     <p>${element.message}</p>
+        //   </div>
+        // </div>`
+        // });
   
-
-
-
-
-
+      
+      
+      })
+      .then(()=>{
+        for(i=0;i<commentArr.length;i++){
+          out_thecomment.innerHTML+=`<div class="comment">
+          <div class="commenter">
+            <img src="/assets/images/Icon_profile.svg" alt="">
+            <p>${commentArr[i].name}</p>
+          </div>
+          <div class="comment_text">
+            <p>${commentArr[i].message}</p>
+          </div>
+        </div>`
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      })
+ 
 
 }
 
@@ -82,25 +121,49 @@ function submit(){
   console.log("you can comment");
   out.innerHTML="";
   outcomment.innerHTML="";
+  let myId=arrarticle[0].id;
+  console.log(myId)
   
   let the_comment={
-    name:username.value,
+    username:username.value,
     message:message.value
   }
-  let temp = arrarticle[0].id
-  posts[temp].comments.push(the_comment);
-  console.log(posts)
-  username.value="";
-  message.value="";
-  localStorage.setItem("post", JSON.stringify(posts));
+  fetch(`http://127.0.0.1:5000/api/v1/CRUD/${myId}/comments`,{
+    method: 'PUT',
 
-  display();
+    headers: {
+      'Content-Type': 'application/json'},
+      body: JSON.stringify(the_comment)
 
+
+      
+
+  })
+  .then(response => response.json())
+  .then(response => {
+    console.log(response)
+    if(response.status===200){
+      console.log("done")
+      display();
+    }
+  })
+
+  // let temp = arrarticle[0].id
+  // posts[temp].comments.push(the_comment);
+  // console.log(posts)
+  // username.value="";
+  // message.value="";
+  // localStorage.setItem("post", JSON.stringify(posts));
+
+  // display();
 
   
+    
+  }
   
-}
+  
 
+// http://127.0.0.1:5000/api/v1/CRUD/640e389f545eb384a917883a/comments
 //Leave a comment
 const username= document.getElementById('username');
 const message= document.getElementById('message');

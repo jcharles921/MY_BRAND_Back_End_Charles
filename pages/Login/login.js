@@ -38,7 +38,6 @@ fetch('http://localhost:5000/api/v1/Login',{
     'Content-Type': 'application/json',
     'Accept': 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Cookie':'token'
     
   },
   body: JSON.stringify(req),
