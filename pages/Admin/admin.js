@@ -36,7 +36,7 @@ function display(){
     return `${year}-${month}-${date}, ${hours}:${minutes}`;
   }
   
-  fetch('http://localhost:5000/api/v1/CRUD',{
+  fetch('https://tame-puce-chipmunk-hose.cyclic.app/api/v1/CRUD',{
   })
   .then(response => response.json())
   .then(response => {
@@ -86,7 +86,7 @@ let reader = new FileReader();
   const data={content:article_text.value, title:article_title.value, imageUrl:reader.result, createdAt:article_date.value }
   console.log(data);
 
-  fetch('http://localhost:5000/api/v1/CRUD',{
+  fetch('https://tame-puce-chipmunk-hose.cyclic.app/api/v1/CRUD',{
 
 
     method: 'POST',
@@ -120,7 +120,7 @@ buttonUpdate.addEventListener('click', ()=>{
       let theId= localStorage.getItem("currentID")
       console.log(theId)
       console.log(data);
-      fetch(`http://localhost:5000/api/v1/CRUD/${theId}`,{
+      fetch(`https://tame-puce-chipmunk-hose.cyclic.app/api/v1/CRUD/${theId}`,{
         method: 'PATCH',
         headers: {
           "Content-Type": "application/json",
@@ -158,7 +158,7 @@ arrDelete.forEach((n) => {
       document.getElementById('yes').addEventListener('click', ()=>{
         let myid= n.dataset.num;
         console.log(myid)
-        fetch(`http://localhost:5000/api/v1/CRUD/${myid}`,{
+        fetch(`https://tame-puce-chipmunk-hose.cyclic.app/api/v1/CRUD/${myid}`,{
           method: 'DELETE',
           headers: {
             "Content-Type": "application/json",
@@ -208,7 +208,7 @@ function edit(){
       localStorage.setItem("currentID",(myid));
     allIds.forEach((id)=>{
       if(myid ==id){
-         fetch(`http://localhost:5000/api/v1/CRUD/${myid}`,{
+         fetch(`https://tame-puce-chipmunk-hose.cyclic.app/api/v1/CRUD/${myid}`,{
     })
     .then(response => response.json())
     .then(response => {
@@ -240,7 +240,7 @@ const queries_out= document.getElementById("queries");
 const queries=()=>{
 
   // let allQueries=JSON.parse(localStorage.getItem("allQueries")) || [];
-  fetch('http://localhost:5000/api/v1/queries',{
+  fetch('https://tame-puce-chipmunk-hose.cyclic.app/api/v1/queries',{
     method: 'GET',
     headers: {
       "Content-Type": "application/json",

@@ -21,7 +21,7 @@ function submit(){
     message: message.value,
     // time: currentTime
   }
-  fetch('http://localhost:5000/api/v1/queries',{
+  fetch('https://tame-puce-chipmunk-hose.cyclic.app/api/v1/queries',{
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
