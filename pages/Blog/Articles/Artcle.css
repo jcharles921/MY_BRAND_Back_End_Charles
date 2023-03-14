@@ -125,6 +125,49 @@ main{
     display: none;
     z-index: -2;
 }
+.Like{
+    margin-top: 35px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.Like_box{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    border: 2px solid white;
+    width: 150px;
+    justify-content: space-around;
+    border-radius: 20px;
+    cursor: pointer;
+
+
+
+}
+.Like_box img{
+    width: 40px;
+}
+.Like_box #count{
+    margin-left: 5px;
+}
+.blog_loader{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.blog_loader img{
+    width: 50px;
+    animation: rotate2 1.5s linear infinite;
+}
+@keyframes rotate2{
+    from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 .article_section{
     width: 100%;
     /* height: 85vh; */

@@ -34,6 +34,9 @@ function display(){
   })
   
   .then(()=>{
+    document.getElementById('Load').style.display="none";
+    document.getElementById('out_post').style.display="grid";
+    
     function formatDate(dateTimeString) {
       const dateTime = new Date(dateTimeString);
       const year = dateTime.getFullYear();
