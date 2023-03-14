@@ -21,7 +21,7 @@ hamburgerButton_close.addEventListener('click', function() {
 
 function display(){
   // console.log(posts[0].image)s
-  fetch('http://localhost:5000/api/v1/CRUD',{
+  fetch('https://tame-puce-chipmunk-hose.cyclic.app/api/v1/CRUD',{
   })
   .then(response => response.json())
   .then(response => {

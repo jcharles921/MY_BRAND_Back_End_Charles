@@ -33,7 +33,7 @@ let userinfo= JSON.parse(localStorage.getItem('currentUser'));
 function displayUsers(){
   let token=document.cookie.split('=')[1];
   console.log(token)
-  fetch('http://localhost:5000/api/v1/Signup',{
+  fetch('https://tame-puce-chipmunk-hose.cyclic.app/api/v1/Signup',{
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

@@ -58,7 +58,7 @@ display();
 const out_thecomment=document.getElementById('out_thecomment')
 function display(){
   let myId= arrarticle[0].id
-  fetch(`http://127.0.0.1:5000/api/v1/CRUD/${myId}`,{
+  fetch(`https://tame-puce-chipmunk-hose.cyclic.app/api/v1/CRUD/${myId}`,{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'},
@@ -89,16 +89,20 @@ function display(){
       })
       .then(()=>{
         for(i=0;i<commentArr.length;i++){
-          out_thecomment.innerHTML+=`<div class="comment">
-          <div class="commenter">
-            <img src="/assets/images/Icon_profile.svg" alt="">
-            <p>${commentArr[i].name}</p>
-          </div>
-          <div class="comment_text">
-            <p>${commentArr[i].message}</p>
-          </div>
-        </div>`
+          out_thecomment.innerHTML+=`<div class="the_comment" >
+                <p>${commentArr[i].username}</p>
+                <div >${commentArr[i].message}</div>
+            </div>`
         }
+        // <div class="comment">
+        //   <div class="commenter">
+        //     <img src="/assets/images/Icon_profile.svg" alt="">
+        //     <p>${commentArr[i].username}</p>
+        //   </div>
+        //   <div class="comment_text">
+        //     <p>${commentArr[i].message}</p>
+        //   </div>
+        // </div>
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -128,7 +132,7 @@ function submit(){
     username:username.value,
     message:message.value
   }
-  fetch(`http://127.0.0.1:5000/api/v1/CRUD/${myId}/comments`,{
+  fetch(`https://tame-puce-chipmunk-hose.cyclic.app/api/v1/CRUD/${myId}/comments`,{
     method: 'PUT',
 
     headers: {
@@ -142,10 +146,11 @@ function submit(){
   .then(response => response.json())
   .then(response => {
     console.log(response)
-    if(response.status===200){
-      console.log("done")
-      display();
-    }
+    location.reload();
+    // setTimeout(()=>{
+    //   location.reload();
+    // },1000)
+
   })
 
   // let temp = arrarticle[0].id

@@ -31,7 +31,7 @@ hamburgerButton_close.addEventListener('click', function() {
 function submit(){
   const req={ email:email.value, password: pass.value}
   // console.log(req)
-fetch('http://localhost:5000/api/v1/Login',{
+fetch('https://tame-puce-chipmunk-hose.cyclic.app/api/v1/Login',{
 
   method: 'POST',
   headers: {
