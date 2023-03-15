@@ -46,6 +46,7 @@ function display(){
     ;
   })
   .then(()=>{
+    document.getElementById('Load').style.display="none";
     for( i=0;i <posts.length;i++){
       posts[i].createdAt= formatDate(posts[i].createdAt);
       
@@ -251,6 +252,7 @@ const queries=()=>{
   .then(response => response.json())
   .then(response => {
     console.log(response)
+    
     // queries();
     // for(i=0;i<response.data.length;i++){
     //   posts.push(response.data[i])
@@ -261,8 +263,9 @@ const queries=()=>{
 
     }
     setTimeout(()=>{
+      document.getElementById('Load_queries').style.display="none";
       displayQueries();
-    },2000)
+    },1000)
 
     // let allQueries=response.data;
    

@@ -57,6 +57,8 @@ display();
 // DISPLAY FROM LOCALSTORAGE
 const out_thecomment=document.getElementById('out_thecomment')
 function display(){
+  document.getElementById('Load').style.display="none";
+  
   let myId= arrarticle[0].id
   fetch(`https://tame-puce-chipmunk-hose.cyclic.app/api/v1/CRUD/${myId}`,{
       method: 'GET',
@@ -194,6 +196,9 @@ document.getElementById('send').addEventListener('click', function(event) {
   }
 
 });
+function like(){
+  console.log("you can like");
+}
 
 // window.onload(()=>{
 //   if(currentUser){
